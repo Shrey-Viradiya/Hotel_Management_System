@@ -2,15 +2,16 @@ package Hotel_basic;
 
 import java.util.*;
 import Utilities.*;
+import UDexception.*;
 
 public class customer {
 // User Attributes
 
-    private int customerId;
+    private String customerId;
     private String firstName;
     private String lastName;
     private String address;
-    private int mobile;
+    private long mobile;
 
     //rooms allocated
     LinkedList<Room> rooms = new LinkedList<Room>();
@@ -20,47 +21,47 @@ public class customer {
 
     //Get methods
 
-    int getCustomerID(){
+    public String getCustomerID(){
         return customerId;
     }
 
-    String getFirstName(){
+    public String getFirstName(){
         return firstName;
     }
 
-    String getLastName(){
+    public String getLastName(){
         return lastName;
     }
 
-    String getAddress(){
+    public String getAddress(){
         return address;
     }
 
-    int getMobile(){
+    public long getMobile(){
         return mobile;
     }
 
     // Set methods
 
-    void setCustomerID(int customerId){
+    public void setCustomerID(String customerId){
         this.customerId = customerId;
     }
 
-    void setFirstName(String n){
+    public void setFirstName(String n){
         firstName = n;
     }
 
-    void setLastName(String n){
+    public void setLastName(String n){
         lastName = n;
     }
 
-    void setAddress(String adr){
+    public void setAddress(String adr){
         address = adr;
     }
 
-    boolean setMobile(int number){
-        if(number < 1000000000 ){
-            return false;
+    public boolean setMobile(long number) throws InvalidMobileNumber{
+        if(number < 1000000000 || number > 9999999999L){
+            throw new InvalidMobileNumber("Mobile Number Entered is Not Correct");
         }
         else{
             mobile = number;
