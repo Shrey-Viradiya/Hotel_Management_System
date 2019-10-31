@@ -47,15 +47,24 @@ public class customer {
         this.customerId = customerId;
     }
 
-    public void setFirstName(String n){
+    public void setFirstName(String n) throws EmptyFieldException{
+        if(n == null && n.isEmpty()){
+            throw new EmptyFieldException("Check the Input! String Empty or Null");
+        }
         firstName = n;
     }
 
-    public void setLastName(String n){
+    public void setLastName(String n) throws EmptyFieldException{
+        if(n == null && n.isEmpty()){
+            throw new EmptyFieldException("Check the Input! String Empty or Null");
+        }
         lastName = n;
     }
 
-    public void setAddress(String adr){
+    public void setAddress(String adr) throws EmptyFieldException{
+        if(adr == null && adr.isEmpty()){
+            throw new EmptyFieldException("Check the Input! String Empty or Null");
+        }
         address = adr;
     }
 
@@ -67,6 +76,13 @@ public class customer {
             mobile = number;
             return true;
         }
+    }
+
+    // String Display of the object
+
+    public String toString(){
+        String S = "Customer: \nID = " + customerId + "\nName = " + firstName + " "  + lastName + "\nAddress = " + address + "\nContact No. = " + mobile;
+        return S;
     }
 
 }

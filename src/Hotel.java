@@ -1,6 +1,4 @@
-import java.awt.*;
 import java.util.*;
-import java.lang.Math;
 import Hotel_basic.*;
 import UDexception.*;
 import Utilities.*;
@@ -46,24 +44,49 @@ public class Hotel {
 
         temp.setCustomerID(UUID.randomUUID().toString());
 
-        System.out.println("Enter the First Name: ");
-        temp.setFirstName(S.next());
 
-        System.out.println("Enter the Last Name: ");
-        temp.setLastName(S.next());
+        while(true){
+            System.out.println("Enter the First Name: ");
+            try{
+                temp.setFirstName(S.next());
+                break ;
+            } catch (EmptyFieldException e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
-        System.out.println("Enter the Address: ");
-        S.nextInt();
-        temp.setAddress(S.nextLine());
 
-        X:
+        while(true){
+            System.out.println("Enter the Last Name: ");
+            try{
+                temp.setLastName(S.next());
+                break;
+            } catch (EmptyFieldException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        while(true){
+            System.out.println("Enter the Address: ");
+            S.nextLine();
+            try{
+                temp.setAddress(S.nextLine());
+                break;
+            } catch (EmptyFieldException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
         while(true){
             System.out.println("Enter the Mobile No.: ");
             try{
                 temp.setMobile(S.nextLong());
-                break X;
+                break;
             } catch (InvalidMobileNumber invalidMobileNumber) {
                 System.out.println(invalidMobileNumber.getMessage());
+            } catch (InputMismatchException e){
+                System.out.println("Input Type is Mismatched. Enter Integral values only");
+                S.nextLine();
             }
         }
 
