@@ -8,16 +8,15 @@ public class customer {
 // User Attributes
 
     private String customerId;
-    private String firstName;
-    private String lastName;
+    private String Name;
     private String address;
     private long mobile;
 
     //rooms allocated
-    LinkedList<Room> rooms = new LinkedList<Room>();
+    private LinkedList<Room> rooms = new LinkedList<Room>();
 
     //orders
-    LinkedList<Item> items = new LinkedList<Item>();
+    private LinkedList<Item> items = new LinkedList<Item>();
 
     //Get methods
 
@@ -25,12 +24,8 @@ public class customer {
         return customerId;
     }
 
-    public String getFirstName(){
-        return firstName;
-    }
-
-    public String getLastName(){
-        return lastName;
+    public String getName(){
+        return Name;
     }
 
     public String getAddress(){
@@ -47,19 +42,13 @@ public class customer {
         this.customerId = customerId;
     }
 
-    public void setFirstName(String n) throws EmptyFieldException{
+    public void setName(String n) throws EmptyFieldException{
         if(n == null && n.isEmpty()){
             throw new EmptyFieldException("Check the Input! String Empty or Null");
         }
-        firstName = n;
+        Name = n;
     }
 
-    public void setLastName(String n) throws EmptyFieldException{
-        if(n == null && n.isEmpty()){
-            throw new EmptyFieldException("Check the Input! String Empty or Null");
-        }
-        lastName = n;
-    }
 
     public void setAddress(String adr) throws EmptyFieldException{
         if(adr == null && adr.isEmpty()){
@@ -78,10 +67,18 @@ public class customer {
         }
     }
 
+    public void addRoom(Room r){
+        rooms.add(r);
+    }
+
+    public void addItem(Item i){
+        items.add(i);
+    }
+
     // String Display of the object
 
     public String toString(){
-        String S = "Customer: \nID = " + customerId + "\nName = " + firstName + " "  + lastName + "\nAddress = " + address + "\nContact No. = " + mobile;
+        String S = "Customer: \nID = " + customerId + "\nName = " + Name + "\nAddress = " + address + "\nContact No. = " + mobile;
         return S;
     }
 
