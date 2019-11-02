@@ -44,7 +44,7 @@ public class Hotel {
     private static void getInfo() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 //        Scanner S = new Scanner(System.in);
-        int one,two;
+        int one, two;
 
         System.out.println("Enter the no. of 1 bed rooms and 2 bed room wanted...");
         one = Integer.parseInt(br.readLine());
@@ -52,19 +52,20 @@ public class Hotel {
 //        one = S.nextInt();
 //        two = S.nextInt();
 
-        if(one <= available_rooms_1bed.size()){
+        if (one <= available_rooms_1bed.size()) {
             System.out.println("One bed Rooms available..");
-        }
-        else{
+        } else {
             System.out.println("One bed Rooms NOT available..");
         }
 
-        if(two <= available_rooms_2bed.size()){
+        if (two <= available_rooms_2bed.size()) {
             System.out.println("Two bed Rooms available..");
-        }
-        else{
+        } else {
             System.out.println("Two bed Rooms NOT available..");
         }
+
+        System.out.println("One bed Rooms: " + available_rooms_1bed.size() + " Rooms available");
+        System.out.println("Two bed Rooms: " + available_rooms_2bed.size() + " Rooms available");
     }
 
     private static void newCustomer() throws IOException {
@@ -75,19 +76,19 @@ public class Hotel {
         temp.setCustomerID(UUID.randomUUID().toString());
 
 
-        while(true){
+        while (true) {
             System.out.println("Enter the Name: ");
-            try{
+            try {
                 temp.setName(br.readLine());
-                break ;
+                break;
             } catch (EmptyFieldException | IOException e) {
                 System.out.println(e.getMessage());
             }
         }
 
-        while(true){
+        while (true) {
             System.out.println("Enter the Address: ");
-            try{
+            try {
                 temp.setAddress(br.readLine());
                 break;
             } catch (EmptyFieldException | IOException e) {
@@ -95,9 +96,9 @@ public class Hotel {
             }
         }
 
-        while(true){
+        while (true) {
             System.out.println("Enter the Mobile No.: ");
-            try{
+            try {
                 while (true)
                     try {
                         temp.setMobile(Long.parseLong(br.readLine()));
@@ -107,7 +108,7 @@ public class Hotel {
                 break;
             } catch (InvalidMobileNumber | IOException exp) {
                 System.out.println(exp.getMessage());
-            } catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("Input Type is Mismatched. Enter Integral values only");
                 br.readLine();
             }
@@ -155,16 +156,16 @@ public class Hotel {
 
     private static void allocateRoom(customer c) throws IOException, RoomsNotAvailable {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int one,two;
+        int one, two;
 
         System.out.println("Enter the no. of 1 bed rooms and 2 bed room wanted...");
         one = Integer.parseInt(br.readLine());
         two = Integer.parseInt(br.readLine());
 
-        if(one < available_rooms_1bed.size()){
+        if (one > available_rooms_1bed.size()) {
             throw new RoomsNotAvailable("One bed rooms not available according to the demand! Please check other options");
         }
-        if (two < available_rooms_2bed.size()) {
+        if (two > available_rooms_2bed.size()) {
             throw new RoomsNotAvailable("Two bed rooms not available according to the demand! Please check other options");
         }
         for (int i = 0; i < one; i++) {
@@ -203,11 +204,9 @@ public class Hotel {
         for (customer cust : customers) {
             if (cust.getMobile() == mobile2search) {
                 return cust;
-            } else {
-                throw new CustomerNotFound("No customer with given mobile number is registered.");
             }
         }
-        return null;
+        throw new CustomerNotFound("No customer with given mobile number is registered.");
     }
 
     public static void main(String[] args) throws Exception {
@@ -241,55 +240,53 @@ public class Hotel {
                     newCustomer();
                     break;
                 case 2:
-                    boolean flag = false;
-                    do {
                         try {
                             customer fetched2serve = fetchCustomer();
-                            flag = false;
 
-                            // Customer Service:
-                            System.out.println("\n______________________\nCustomer Service Options");
-                            System.out.println("1. Allocate Rooms");
-                            System.out.println("2. Item/ Orders");
-                            System.out.println("3. Services");
-                            System.out.println("4. Check Out");
+                            CustomerMenu:
+                            while (true) {
+                                // Customer Service:
+                                System.out.println("\n______________________\nCustomer Service Options");
+                                System.out.println("1. Allocate Rooms");
+                                System.out.println("2. Item/ Orders");
+                                System.out.println("3. Services");
+                                System.out.println("4. Check Out");
+                                System.out.println("5. Exit customer menu");
 
-                            short innerInput;
-                            innerInput = Short.parseShort(br.readLine());
+                                short innerInput;
+                                innerInput = Short.parseShort(br.readLine());
 
-                            switch (innerInput) {
-                                case 1:
-                                    try {
-                                        allocateRoom(fetched2serve);
-                                    } catch (Exception e) {
-                                        System.out.println(e.getMessage());
-                                    }
-                                    break;
-                                case 2:
-                                    assert fetched2serve != null;
-                                    provideItem(fetched2serve);
-                                    break;
-                                case 3:
-                                    assert fetched2serve != null;
-                                    provideService(fetched2serve);
-                                    break;
-                                case 4:
+                                switch (innerInput) {
+                                    case 1:
+                                        try {
+                                            allocateRoom(fetched2serve);
+                                        } catch (Exception e) {
+                                            System.out.println(e.getMessage());
+                                        }
+                                        break;
+                                    case 2:
+                                        provideItem(fetched2serve);
+                                        break;
+                                    case 3:
+                                        provideService(fetched2serve);
+                                        break;
+                                    case 4:
 
-                                    break;
-                                default:
-                                    System.out.println("Unexpected Value Given! Try Again! ");
-                                    break;
+                                        break;
+                                    case 5:
+                                        break CustomerMenu;
+                                    default:
+                                        System.out.println("Unexpected Value Given! Try Again! ");
+                                        break;
+
+                                }
                             }
-
 
                         } catch (IOException e) {
                             System.out.println("Input Error! Try Again..");
-                            flag = true;
                         } catch (CustomerNotFound customerNotFound) {
                             System.out.println(customerNotFound.getMessage());
-                            flag = true;
                         }
-                    } while (flag);
                     break;
                 case 3:
                     getInfo();
@@ -300,6 +297,7 @@ public class Hotel {
                     break;
         }
         }
+
 
     }
 }
