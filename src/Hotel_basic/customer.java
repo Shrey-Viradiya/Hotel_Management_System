@@ -1,8 +1,11 @@
 package Hotel_basic;
 
-import java.util.*;
-import Utilities.*;
-import UDexception.*;
+import UDexception.EmptyFieldException;
+import UDexception.InvalidMobileNumber;
+import Utilities.Item;
+import Utilities.Service;
+
+import java.util.LinkedList;
 
 public class customer {
 // User Attributes
@@ -17,6 +20,9 @@ public class customer {
 
     //orders
     private LinkedList<Item> items = new LinkedList<Item>();
+
+    //Services
+    private LinkedList<Service> services = new LinkedList<>();
 
     //Get methods
 
@@ -57,13 +63,12 @@ public class customer {
         address = adr;
     }
 
-    public boolean setMobile(long number) throws InvalidMobileNumber{
+    public void setMobile(long number) throws InvalidMobileNumber {
         if(number < 1000000000 || number > 9999999999L){
             throw new InvalidMobileNumber("Mobile Number Entered is Not Correct");
         }
         else{
             mobile = number;
-            return true;
         }
     }
 
@@ -73,6 +78,10 @@ public class customer {
 
     public void addItem(Item i){
         items.add(i);
+    }
+
+    public void addService(Service s) {
+        services.add(s);
     }
 
     // String Display of the object
