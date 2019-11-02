@@ -98,7 +98,12 @@ public class Hotel {
         while(true){
             System.out.println("Enter the Mobile No.: ");
             try{
-                temp.setMobile(Long.parseLong(br.readLine()));
+                while (true)
+                    try {
+                        temp.setMobile(Long.parseLong(br.readLine()));
+                        break;
+                    } catch (NumberFormatException ignored) {
+                    }
                 break;
             } catch (InvalidMobileNumber | IOException exp) {
                 System.out.println(exp.getMessage());
@@ -177,15 +182,20 @@ public class Hotel {
 
         System.out.println("Enter the name to search");
         String name2search;
+        int count = 0;
 
         name2search = br.readLine().toLowerCase();
         for (customer cust : customers) {
             if (cust.getName().toLowerCase().contains(name2search)) {
                 System.out.println(cust);
                 System.out.println("______________");
+                count++;
             }
         }
 
+        if (count == 0) {
+            throw new CustomerNotFound("No customer with given name is registered.");
+        }
         System.out.println("Enter the Mobile No. of the customer to fetch it:");
         Long mobile2search;
 
@@ -206,7 +216,7 @@ public class Hotel {
         Main_control_loop:
         while (true) {
             System.out.println("\n\n______________________");
-            System.out.println("Welcome to Hotel JavaKenia Management System");
+            System.out.println("Welcome to Hotel JavaKania Management System");
             System.out.println("______________________\n\n");
             System.out.println("1. Add New Customer");
             System.out.println("2. Fetch the Customer");
@@ -216,7 +226,13 @@ public class Hotel {
             System.out.println("Enter Your choice: ");
 
             short input;
-            input = Short.parseShort(br.readLine());
+            while (true)
+                try {
+                    input = Short.parseShort(br.readLine());
+                    break;
+                } catch (NumberFormatException ignored) {
+
+                }
 
             switch (input) {
                 case 0:
@@ -250,9 +266,11 @@ public class Hotel {
                                     }
                                     break;
                                 case 2:
+                                    assert fetched2serve != null;
                                     provideItem(fetched2serve);
                                     break;
                                 case 3:
+                                    assert fetched2serve != null;
                                     provideService(fetched2serve);
                                     break;
                                 case 4:
