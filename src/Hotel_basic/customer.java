@@ -2,6 +2,7 @@ package Hotel_basic;
 
 import UDexception.EmptyFieldException;
 import UDexception.InvalidMobileNumber;
+import UDexception.RoomsNotAvailable;
 import Utilities.Item;
 import Utilities.Service;
 
@@ -89,6 +90,43 @@ public class customer {
     public String toString(){
         String S = "Customer: \nID = " + customerId + "\nName = " + Name + "\nAddress = " + address + "\nContact No. = " + mobile;
         return S;
+    }
+
+    public void generate_bill() {
+        System.out.println("Generating Bill of Stay......");
+        System.out.println("_____________________________");
+
+        double total = 0;
+
+        for (Room x : rooms) {
+            total += x.getStay_day() * x.getRentPerDay();
+        }
+
+        System.out.println("Room Stay\t\t: " + total);
+
+        for (Item i : items) {
+            System.out.println(i.getItem() + "\t\t: " + (i.getQuantity() * i.getPricePerUnit()));
+            total += i.getQuantity() * i.getPricePerUnit();
+        }
+
+        for (Service S : services) {
+            System.out.println(S.getServiceName() + "\t\t: " + S.getPrice());
+            total += S.getPrice();
+        }
+
+        System.out.println("__________________________________");
+
+        System.out.println("Total\t\t: " + total);
+    }
+
+    public Room remove_room() throws RoomsNotAvailable {
+        if (rooms.isEmpty()) {
+            throw new RoomsNotAvailable("No rooms remaining...");
+        } else {
+            Room temp = rooms.pop();
+            temp.setStay_day(0);
+            return temp;
+        }
     }
 
 }

@@ -4,6 +4,7 @@ public class Room {
     private int room_id;
     private String room_no;
     private int bed_number;
+    private int stay_day = 1;
     private double rentPerDay;
     // private customer person;
 
@@ -18,7 +19,7 @@ public class Room {
         return room_id;
     }
 
-    public String getrRoomNO(){
+    public String getRoomNO() {
         return room_no;
     }
 
@@ -26,7 +27,11 @@ public class Room {
         return bed_number;
     }
 
-    public double getRentPerDay(){
+    int getStay_day() {
+        return stay_day;
+    }
+
+    double getRentPerDay() {
         return rentPerDay;
     }
 
@@ -35,23 +40,27 @@ public class Room {
     //     return person;
     // }
 
-    public void setRoomID(int x){
+    private void setRoomID(int x) {
         room_id = x;
     }
 
-    public void setRoomNO(String x){
+    private void setRoomNO(String x) {
         room_no = x;
     }
 
-    public void setBedNo(int x){
+    private void setBedNo(int x) {
         bed_number = x;
     }
 
-    public void setRent(double x){
+    private void setRent(double x) {
         rentPerDay = x;
     }
 
     // void setPerson(customer x){
     //     person = x;
     // }
+
+    void setStay_day(int x) {
+        stay_day = x;
+    }
 }

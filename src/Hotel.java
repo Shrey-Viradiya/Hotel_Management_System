@@ -209,6 +209,28 @@ public class Hotel {
         throw new CustomerNotFound("No customer with given mobile number is registered.");
     }
 
+    private static void checkout(customer fetched2serve) {
+        fetched2serve.generate_bill();
+
+        try {
+            while (true) {
+                Room temp;
+                temp = fetched2serve.remove_room();
+
+                if (temp.getBedNo() == 1) {
+                    available_rooms_1bed.add(temp);
+                } else {
+                    available_rooms_2bed.add(temp);
+                }
+            }
+        } catch (RoomsNotAvailable roomsNotAvailable) {
+            System.out.println(roomsNotAvailable.getMessage());
+            System.out.println("Room(s) Cleaning Done. Room(s) are now available to be used again. ");
+        }
+
+        customers.remove(fetched2serve);
+    }
+
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -220,6 +242,7 @@ public class Hotel {
             System.out.println("1. Add New Customer");
             System.out.println("2. Fetch the Customer");
             System.out.println("3. Get Info");
+            System.out.println("4. Get Customers");
             System.out.println("0. Quit");
             System.out.println("______________________\n\n");
             System.out.println("Enter Your choice: ");
@@ -271,8 +294,8 @@ public class Hotel {
                                         provideService(fetched2serve);
                                         break;
                                     case 4:
-
-                                        break;
+                                        checkout(fetched2serve);
+                                        break CustomerMenu;
                                     case 5:
                                         break CustomerMenu;
                                     default:
@@ -291,13 +314,18 @@ public class Hotel {
                 case 3:
                     getInfo();
                     break;
+                case 4:
+                    System.out.println("Customers............");
+                    System.out.println("_____________________");
 
+                    for (customer c : customers) {
+                        System.out.println(c.getName());
+                    }
+                    break;
                 default:
                     System.out.println("Unexpected Value Given! Try Again! ");
                     break;
         }
         }
-
-
     }
 }

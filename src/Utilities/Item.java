@@ -11,27 +11,27 @@ public class Item {
         this.priceperunit = priceperunit;
     }
 
-    String getString() {
+    public String getItem() {
         return item;
     }
 
-    int getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    double getPricePerUnit() {
+    public double getPricePerUnit() {
         return priceperunit;
     }
 
-    void setString(String x) {
+    public void setItem(String x) {
         item = x;
     }
 
-    void setQuantity(int x) {
+    public void setQuantity(int x) {
         quantity = x;
     }
 
-    void setPricePerUnit(double x) {
+    public void setPricePerUnit(double x) {
         priceperunit = x;
     }
 
