@@ -7,9 +7,10 @@ import UDexception.RoomsNotAvailable;
 import Utilities.Item;
 import Utilities.Service;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.UUID;
@@ -26,6 +27,23 @@ public class Hotel {
     // Employees
 //    private static LinkedList<Employee> employees = new LinkedList<Employee>();
 
+    // Log file creation
+    private static File log_file = new File("logs.txt");
+    private static PrintWriter output;
+
+    static {
+        try {
+            output = new PrintWriter(new FileOutputStream(log_file, true));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    // Date_time variables
+    private static DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+    private static Calendar calobj = Calendar.getInstance();
+
     static {
         System.out.println("Creating Hotel System: ");
         System.out.println("-----------------------");
@@ -39,6 +57,9 @@ public class Hotel {
         for (int i = 15; i < 30; i++) {
             available_rooms_2bed.add(new Room(i, 2, 1800));
         }
+    }
+
+    public Hotel() throws FileNotFoundException {
     }
 
     private static void getInfo() throws IOException {
@@ -116,6 +137,9 @@ public class Hotel {
 
         customers.add(temp);
 
+        // Writing Operations on Log File:
+        output.append("\nNew customer: (@time: " + df.format(calobj.getTime()) + "): " + temp);
+
     }
 
     private static void provideItem(customer c) throws IOException {
@@ -136,6 +160,10 @@ public class Hotel {
         Item temp = new Item(item, quantity, ppu);
 
         c.addItem(temp);
+
+        // Writing Operations on Log File:
+        output.append("\nItem Ordered: (@time: " + df.format(calobj.getTime()) + "): By customer: " + c.getCustomerID() + ": " + temp);
+
     }
 
     private static void provideService(customer c) throws IOException {
@@ -152,6 +180,10 @@ public class Hotel {
         Service temp = new Service(Service, Price);
 
         c.addService(temp);
+
+        // Writing Operations on Log File:
+        output.append("\nService Provided: (@time: " + df.format(calobj.getTime()) + "): To customer: " + c.getCustomerID() + ": " + temp);
+
     }
 
     private static void allocateRoom(customer c) throws IOException, RoomsNotAvailable {
@@ -169,11 +201,19 @@ public class Hotel {
             throw new RoomsNotAvailable("Two bed rooms not available according to the demand! Please check other options");
         }
         for (int i = 0; i < one; i++) {
-            c.addRoom(available_rooms_1bed.pop());
+            Room temp = available_rooms_1bed.pop();
+            c.addRoom(temp);
+            // Writing Operations on Log File:
+            output.append("\nRoom Allocated: (@time: " + df.format(calobj.getTime()) + "): To customer: " + c.getCustomerID() + ": " + temp);
+
         }
 
         for (int i = 0; i < two; i++) {
-            c.addRoom(available_rooms_2bed.pop());
+            Room temp = available_rooms_2bed.pop();
+            c.addRoom(temp);
+            // Writing Operations on Log File:
+            output.append("\nRoom Allocated: (@time: " + df.format(calobj.getTime()) + "): To customer: " + c.getCustomerID() + ": " + temp);
+
         }
     }
 
@@ -229,6 +269,10 @@ public class Hotel {
         }
 
         customers.remove(fetched2serve);
+
+        // Writing Operations on Log File:
+        output.append("\nCustomer Checked Out: (@time: " + df.format(calobj.getTime()) + "): " + fetched2serve);
+
     }
 
     public static void main(String[] args) throws Exception {
@@ -258,6 +302,7 @@ public class Hotel {
 
             switch (input) {
                 case 0:
+                    output.close();
                     break Main_control_loop;
                 case 1:
                     newCustomer();

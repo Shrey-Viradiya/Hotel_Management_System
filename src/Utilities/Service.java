@@ -28,4 +28,9 @@ public class Service {
     public void setPrice(double x) {
         Price = x;
     }
+
+    @Override
+    public String toString() {
+        return Service + "@ Rs. " + Price;
+    }
 }

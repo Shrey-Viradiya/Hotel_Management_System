@@ -35,4 +35,10 @@ public class Item {
         priceperunit = x;
     }
 
+    @Override
+    public String toString() {
+        String S;
+        S = item + "@ Rs. " + priceperunit + " * " + quantity;
+        return S;
+    }
 }

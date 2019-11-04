@@ -86,10 +86,9 @@ public class customer {
     }
 
     // String Display of the object
-
+    @Override
     public String toString(){
-        String S = "Customer: \nID = " + customerId + "\nName = " + Name + "\nAddress = " + address + "\nContact No. = " + mobile;
-        return S;
+        return "Customer: ID = " + customerId + " Name = " + Name + " Address = " + address + " Contact No. = " + mobile;
     }
 
     public void generate_bill() {

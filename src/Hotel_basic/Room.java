@@ -63,4 +63,9 @@ public class Room {
     void setStay_day(int x) {
         stay_day = x;
     }
+
+    @Override
+    public String toString() {
+        return "Room No. " + room_no + " with no of bed(s): " + bed_number;
+    }
 }
