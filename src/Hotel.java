@@ -30,22 +30,88 @@ public class Hotel {
     // Log file creation
     private static File log_file = new File("logs.txt");
 
+    // Customer file Creation
+    private static File customer_data = new File("customers.txt");
+
+    // OneBedRoom file creation
+    private static File OneBedRoom = new File("OneBedRoom.txt");
+
+    // TwoBedRoom file creation
+    private static File TwoBedRoom = new File("TwoBedRoom.txt");
+
     // Date_time variables
     private static DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
     private static Calendar calobj = Calendar.getInstance();
 
-    static {
-        System.out.println("Creating Hotel System: ");
-        System.out.println("-----------------------");
+    private static void initialize() throws IOException {
+//        {
+//            System.out.println("Creating Hotel System: ");
+//            System.out.println("-----------------------");
+//
+//            System.out.println("Allocating Rooms");
+//            System.out.println("----------------");
+//
+//            for (int i = 0; i < 15; i++) {
+//                available_rooms_1bed.add(new Room(i, 1, 1000));
+//            }
+//            for (int i = 15; i < 30; i++) {
+//                available_rooms_2bed.add(new Room(i, 2, 1800));
+//            }
+//        }
 
-        System.out.println("Allocating Rooms");
-        System.out.println("----------------");
+        {
 
-        for (int i = 0; i < 15; i++) {
-            available_rooms_1bed.add(new Room(i, 1, 1000));
-        }
-        for (int i = 15; i < 30; i++) {
-            available_rooms_2bed.add(new Room(i, 2, 1800));
+            System.out.println("Initializing Hotel System: ");
+            System.out.println("-----------------------");
+
+            System.out.println("Fetching Data");
+            System.out.println("----------------");
+
+            FileInputStream fi1 = new FileInputStream(customer_data);
+            ObjectInputStream input = new ObjectInputStream(fi1);
+
+            try {
+                while (true) {
+                    customer S = (customer) input.readObject();
+                    customers.add(S);
+                }
+            } catch (EOFException | ClassNotFoundException ignored) {
+            }
+
+            input.close();
+            fi1.close();
+            customer_data.delete();
+
+            FileInputStream fi2 = new FileInputStream(OneBedRoom);
+            ObjectInputStream input2 = new ObjectInputStream(fi2);
+
+            try {
+                while (true) {
+                    Room R = (Room) input2.readObject();
+                    available_rooms_1bed.add(R);
+                }
+            } catch (EOFException | ClassNotFoundException ignored) {
+            }
+
+            input2.close();
+            fi2.close();
+            OneBedRoom.delete();
+
+            FileInputStream fi3 = new FileInputStream(TwoBedRoom);
+            ObjectInputStream input3 = new ObjectInputStream(fi3);
+
+            try {
+                while (true) {
+                    Room R = (Room) input3.readObject();
+                    available_rooms_2bed.add(R);
+                }
+            } catch (EOFException | ClassNotFoundException ignored) {
+            }
+
+            input3.close();
+            fi3.close();
+            TwoBedRoom.delete();
+
         }
     }
 
@@ -242,7 +308,7 @@ public class Hotel {
         name2search = br.readLine().toLowerCase();
         for (customer cust : customers) {
             if (cust.getName().toLowerCase().contains(name2search)) {
-                System.out.println(cust);
+                System.out.println(cust.toStringProper());
                 System.out.println("______________");
                 count++;
             }
@@ -297,6 +363,8 @@ public class Hotel {
     }
 
     public static void main(String[] args) throws Exception {
+        initialize();
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         Main_control_loop:
@@ -374,6 +442,8 @@ public class Hotel {
                             System.out.println("Input Error! Try Again..");
                         } catch (CustomerNotFound customerNotFound) {
                             System.out.println(customerNotFound.getMessage());
+                        } catch (Exception E) {
+                            System.out.println("Error Occured! Please Try Again..");
                         }
                     break;
                 case 3:
@@ -393,12 +463,12 @@ public class Hotel {
         }
         }
 
-        File customer_data = new File("customers.txt");
+
         FileOutputStream fo = new FileOutputStream(customer_data);
         ObjectOutputStream output = new ObjectOutputStream(fo);
         try {
             while (true) {
-                output.writeObject(customers.getFirst());
+                output.writeObject(customers.pop());
             }
         } catch (Exception ignored) {
 
@@ -406,7 +476,7 @@ public class Hotel {
         output.close();
         fo.close();
 
-        File OneBedRoom = new File("OneBedRoom.txt");
+
         FileOutputStream fo2 = new FileOutputStream(OneBedRoom);
         ObjectOutputStream output2 = new ObjectOutputStream(fo2);
         try {
@@ -419,7 +489,7 @@ public class Hotel {
         output2.close();
         fo2.close();
 
-        File TwoBedRoom = new File("TwoBedRoom.txt");
+
         FileOutputStream fo3 = new FileOutputStream(TwoBedRoom);
         ObjectOutputStream output3 = new ObjectOutputStream(fo3);
         try {

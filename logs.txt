@@ -1,12 +1,15 @@
 
-New customer: (@time: 05/11/19 10:45:29): Customer: ID = daddc302-8a88-42de-ab11-eb1d46d3e5c5 Name = Shrey Viradiya Address = Nathdwara Contact No. = 7046170441
-New customer: (@time: 05/11/19 10:45:29): Customer: ID = 25f5f3f9-31fe-441e-ad88-6f2e69fcb179 Name = Sunidhi Tandel Address = Surat Contact No. = 1111111111
-Item Ordered: (@time: 05/11/19 10:45:29): By customer: daddc302-8a88-42de-ab11-eb1d46d3e5c5: Sandwich@ Rs. 250.0 * 2
-Room Allocated: (@time: 05/11/19 10:45:29): To customer: daddc302-8a88-42de-ab11-eb1d46d3e5c5: Room No. Room100 with no of bed(s): 1
-Service Provided: (@time: 05/11/19 10:45:29): To customer: daddc302-8a88-42de-ab11-eb1d46d3e5c5: Laundry@ Rs. 250.0
-Room Allocated: (@time: 05/11/19 10:45:29): To customer: 25f5f3f9-31fe-441e-ad88-6f2e69fcb179: Room No. Room115 with no of bed(s): 2
-Item Ordered: (@time: 05/11/19 10:45:29): By customer: 25f5f3f9-31fe-441e-ad88-6f2e69fcb179: Pizza@ Rs. 189.0 * 2
-Service Provided: (@time: 05/11/19 10:45:29): To customer: 25f5f3f9-31fe-441e-ad88-6f2e69fcb179: Spa@ Rs. 2500.0
-New customer: (@time: 05/11/19 10:45:29): Customer: ID = d2c5f00e-30fc-446c-a9d9-2cd9f169d0fd Name = Tirth Patel Address = Happy Residency Contact No. = 1234567890
-Item Ordered: (@time: 05/11/19 10:45:29): By customer: d2c5f00e-30fc-446c-a9d9-2cd9f169d0fd: Veg. Hakka Noodles@ Rs. 250.0 * 1
-Customer Checked Out: (@time: 05/11/19 10:45:29): Customer: ID = d2c5f00e-30fc-446c-a9d9-2cd9f169d0fd Name = Tirth Patel Address = Happy Residency Contact No. = 1234567890
+New customer: (@time: 05/11/19 22:20:48): Customer: ID = 219b0b1d-7e2a-4b49-9f30-f6211c1c5dc9 Name = Shrey Viradiya Address = 303, Nathdwara Contact No. = 7046170441
+Item Ordered: (@time: 05/11/19 22:20:48): By customer: 219b0b1d-7e2a-4b49-9f30-f6211c1c5dc9: Mineral WWater@ Rs. 25.0 * 3
+Service Provided: (@time: 05/11/19 22:20:48): To customer: 219b0b1d-7e2a-4b49-9f30-f6211c1c5dc9: Spa@ Rs. 1542.0
+Room Allocated: (@time: 05/11/19 22:20:48): To customer: 219b0b1d-7e2a-4b49-9f30-f6211c1c5dc9: Room No. Room100 with no of bed(s): 1
+New customer: (@time: 05/11/19 22:20:48): Customer: ID = fcc269fd-2a72-4ae8-8da9-4f8ed7a3473d Name = Kenil Gajera Address = Ankele Contact No. = 1254789632
+Room Allocated: (@time: 05/11/19 22:20:48): To customer: fcc269fd-2a72-4ae8-8da9-4f8ed7a3473d: Room No. Room115 with no of bed(s): 2
+Room Allocated: (@time: 05/11/19 22:20:48): To customer: fcc269fd-2a72-4ae8-8da9-4f8ed7a3473d: Room No. Room116 with no of bed(s): 2
+Item Ordered: (@time: 05/11/19 22:20:48): By customer: fcc269fd-2a72-4ae8-8da9-4f8ed7a3473d: Special Ayurved Shampoo@ Rs. 1.0 * 250
+Customer Checked Out: (@time: 05/11/19 22:24:40): Customer: ID = fcc269fd-2a72-4ae8-8da9-4f8ed7a3473d Name = Kenil Gajera Address = Ankele Contact No. = 1254789632
+New customer: (@time: 05/11/19 22:24:40): Customer: ID = f85c6f83-9ed0-415b-8dee-481810e3b982 Name = Shrey Patel Address = Garden City Contact No. = 1254369870
+Room Allocated: (@time: 05/11/19 22:24:40): To customer: f85c6f83-9ed0-415b-8dee-481810e3b982: Room No. Room101 with no of bed(s): 1
+Room Allocated: (@time: 05/11/19 22:24:40): To customer: f85c6f83-9ed0-415b-8dee-481810e3b982: Room No. Room102 with no of bed(s): 1
+Item Ordered: (@time: 05/11/19 22:24:40): By customer: f85c6f83-9ed0-415b-8dee-481810e3b982: Popcorn with Extra Cheese@ Rs. 100.0 * 5
+Service Provided: (@time: 05/11/19 22:24:40): To customer: f85c6f83-9ed0-415b-8dee-481810e3b982: Thoking@ Rs. 2500.0

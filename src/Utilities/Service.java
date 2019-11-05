@@ -1,6 +1,8 @@
 package Utilities;
 
-public class Service {
+import java.io.Serializable;
+
+public class Service implements Serializable {
     private String Service;
     private double Price;
 

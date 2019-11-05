@@ -92,6 +92,10 @@ public class customer implements Serializable {
         return "Customer: ID = " + customerId + " Name = " + Name + " Address = " + address + " Contact No. = " + mobile;
     }
 
+    public String toStringProper() {
+        return "\nCustomer: ID = " + customerId + "\nName = " + Name + "\nAddress = " + address + "\nContact No. = " + mobile;
+    }
+
     public void generate_bill() {
         System.out.println("Generating Bill of Stay......");
         System.out.println("_____________________________");
