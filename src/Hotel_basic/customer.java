@@ -133,4 +133,9 @@ public class customer implements Serializable {
         }
     }
 
+    public void addDay() {
+        for (Room i : rooms) {
+            i.setStay_day(i.getStay_day() + 1);
+        }
+    }
 }

@@ -14,6 +14,9 @@ import java.util.Calendar;
 import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.UUID;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class Hotel {
 
@@ -365,6 +368,21 @@ public class Hotel {
     public static void main(String[] args) throws Exception {
         initialize();
 
+        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+        Runnable task = new Runnable() {
+            @Override
+            public void run() {
+
+                for (customer c : customers) {
+                    c.addDay();
+                }
+
+                System.out.println("Day Change....");
+            }
+        };
+        executor.schedule(task, 20, TimeUnit.SECONDS);
+
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         Main_control_loop:
@@ -501,5 +519,9 @@ public class Hotel {
         }
         output3.close();
         fo3.close();
+
+        executor.shutdown();
     }
+
+
 }
