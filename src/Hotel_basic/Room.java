@@ -1,6 +1,8 @@
 package Hotel_basic;
 
-public class Room {
+import java.io.Serializable;
+
+public class Room implements Serializable {
     private int room_id;
     private String room_no;
     private int bed_number;

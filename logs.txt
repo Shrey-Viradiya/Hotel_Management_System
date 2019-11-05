@@ -1,2 +1,12 @@
 
-New customer: (@time: 04/11/19 22:01:20): Customer: ID = 58dab108-0fd7-42fb-81fd-7314ec1f3e97 Name = Shrey Viradiya Address = nathdwara Contact No. = 7046170441
+New customer: (@time: 05/11/19 10:45:29): Customer: ID = daddc302-8a88-42de-ab11-eb1d46d3e5c5 Name = Shrey Viradiya Address = Nathdwara Contact No. = 7046170441
+New customer: (@time: 05/11/19 10:45:29): Customer: ID = 25f5f3f9-31fe-441e-ad88-6f2e69fcb179 Name = Sunidhi Tandel Address = Surat Contact No. = 1111111111
+Item Ordered: (@time: 05/11/19 10:45:29): By customer: daddc302-8a88-42de-ab11-eb1d46d3e5c5: Sandwich@ Rs. 250.0 * 2
+Room Allocated: (@time: 05/11/19 10:45:29): To customer: daddc302-8a88-42de-ab11-eb1d46d3e5c5: Room No. Room100 with no of bed(s): 1
+Service Provided: (@time: 05/11/19 10:45:29): To customer: daddc302-8a88-42de-ab11-eb1d46d3e5c5: Laundry@ Rs. 250.0
+Room Allocated: (@time: 05/11/19 10:45:29): To customer: 25f5f3f9-31fe-441e-ad88-6f2e69fcb179: Room No. Room115 with no of bed(s): 2
+Item Ordered: (@time: 05/11/19 10:45:29): By customer: 25f5f3f9-31fe-441e-ad88-6f2e69fcb179: Pizza@ Rs. 189.0 * 2
+Service Provided: (@time: 05/11/19 10:45:29): To customer: 25f5f3f9-31fe-441e-ad88-6f2e69fcb179: Spa@ Rs. 2500.0
+New customer: (@time: 05/11/19 10:45:29): Customer: ID = d2c5f00e-30fc-446c-a9d9-2cd9f169d0fd Name = Tirth Patel Address = Happy Residency Contact No. = 1234567890
+Item Ordered: (@time: 05/11/19 10:45:29): By customer: d2c5f00e-30fc-446c-a9d9-2cd9f169d0fd: Veg. Hakka Noodles@ Rs. 250.0 * 1
+Customer Checked Out: (@time: 05/11/19 10:45:29): Customer: ID = d2c5f00e-30fc-446c-a9d9-2cd9f169d0fd Name = Tirth Patel Address = Happy Residency Contact No. = 1234567890

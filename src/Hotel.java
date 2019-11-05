@@ -29,16 +29,6 @@ public class Hotel {
 
     // Log file creation
     private static File log_file = new File("logs.txt");
-    private static PrintWriter output;
-
-    static {
-        try {
-            output = new PrintWriter(new FileOutputStream(log_file, true));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     // Date_time variables
     private static DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
@@ -57,9 +47,6 @@ public class Hotel {
         for (int i = 15; i < 30; i++) {
             available_rooms_2bed.add(new Room(i, 2, 1800));
         }
-    }
-
-    public Hotel() throws FileNotFoundException {
     }
 
     private static void getInfo() throws IOException {
@@ -138,7 +125,14 @@ public class Hotel {
         customers.add(temp);
 
         // Writing Operations on Log File:
-        output.append("\nNew customer: (@time: " + df.format(calobj.getTime()) + "): " + temp);
+        try {
+            PrintWriter output = new PrintWriter(new FileOutputStream(log_file, true));
+            output.append("\nNew customer: (@time: ").append(df.format(calobj.getTime())).append("): ").append(String.valueOf(temp));
+            output.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
@@ -162,8 +156,13 @@ public class Hotel {
         c.addItem(temp);
 
         // Writing Operations on Log File:
-        output.append("\nItem Ordered: (@time: " + df.format(calobj.getTime()) + "): By customer: " + c.getCustomerID() + ": " + temp);
-
+        try {
+            PrintWriter output = new PrintWriter(new FileOutputStream(log_file, true));
+            output.append("\nItem Ordered: (@time: ").append(df.format(calobj.getTime())).append("): By customer: ").append(c.getCustomerID()).append(": ").append(String.valueOf(temp));
+            output.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void provideService(customer c) throws IOException {
@@ -182,8 +181,13 @@ public class Hotel {
         c.addService(temp);
 
         // Writing Operations on Log File:
-        output.append("\nService Provided: (@time: " + df.format(calobj.getTime()) + "): To customer: " + c.getCustomerID() + ": " + temp);
-
+        try {
+            PrintWriter output = new PrintWriter(new FileOutputStream(log_file, true));
+            output.append("\nService Provided: (@time: ").append(df.format(calobj.getTime())).append("): To customer: ").append(c.getCustomerID()).append(": ").append(String.valueOf(temp));
+            output.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void allocateRoom(customer c) throws IOException, RoomsNotAvailable {
@@ -204,16 +208,26 @@ public class Hotel {
             Room temp = available_rooms_1bed.pop();
             c.addRoom(temp);
             // Writing Operations on Log File:
-            output.append("\nRoom Allocated: (@time: " + df.format(calobj.getTime()) + "): To customer: " + c.getCustomerID() + ": " + temp);
-
+            try {
+                PrintWriter output = new PrintWriter(new FileOutputStream(log_file, true));
+                output.append("\nRoom Allocated: (@time: ").append(df.format(calobj.getTime())).append("): To customer: ").append(c.getCustomerID()).append(": ").append(String.valueOf(temp));
+                output.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
 
         for (int i = 0; i < two; i++) {
             Room temp = available_rooms_2bed.pop();
             c.addRoom(temp);
             // Writing Operations on Log File:
-            output.append("\nRoom Allocated: (@time: " + df.format(calobj.getTime()) + "): To customer: " + c.getCustomerID() + ": " + temp);
-
+            try {
+                PrintWriter output = new PrintWriter(new FileOutputStream(log_file, true));
+                output.append("\nRoom Allocated: (@time: ").append(df.format(calobj.getTime())).append("): To customer: ").append(c.getCustomerID()).append(": ").append(String.valueOf(temp));
+                output.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -271,7 +285,14 @@ public class Hotel {
         customers.remove(fetched2serve);
 
         // Writing Operations on Log File:
-        output.append("\nCustomer Checked Out: (@time: " + df.format(calobj.getTime()) + "): " + fetched2serve);
+        try {
+            PrintWriter output = new PrintWriter(new FileOutputStream(log_file, true));
+            output.append("\nCustomer Checked Out: (@time: ").append(df.format(calobj.getTime())).append("): ").append(String.valueOf(fetched2serve));
+            output.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
@@ -302,7 +323,6 @@ public class Hotel {
 
             switch (input) {
                 case 0:
-                    output.close();
                     break Main_control_loop;
                 case 1:
                     newCustomer();
@@ -372,5 +392,44 @@ public class Hotel {
                     break;
         }
         }
+
+        File customer_data = new File("customers.txt");
+        FileOutputStream fo = new FileOutputStream(customer_data);
+        ObjectOutputStream output = new ObjectOutputStream(fo);
+        try {
+            while (true) {
+                output.writeObject(customers.getFirst());
+            }
+        } catch (Exception ignored) {
+
+        }
+        output.close();
+        fo.close();
+
+        File OneBedRoom = new File("OneBedRoom.txt");
+        FileOutputStream fo2 = new FileOutputStream(OneBedRoom);
+        ObjectOutputStream output2 = new ObjectOutputStream(fo2);
+        try {
+            while (true) {
+                output2.writeObject(available_rooms_1bed.pop());
+            }
+        } catch (Exception ignored) {
+
+        }
+        output2.close();
+        fo2.close();
+
+        File TwoBedRoom = new File("TwoBedRoom.txt");
+        FileOutputStream fo3 = new FileOutputStream(TwoBedRoom);
+        ObjectOutputStream output3 = new ObjectOutputStream(fo3);
+        try {
+            while (true) {
+                output3.writeObject(available_rooms_2bed.pop());
+            }
+        } catch (Exception ignored) {
+
+        }
+        output3.close();
+        fo3.close();
     }
 }

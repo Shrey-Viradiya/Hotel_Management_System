@@ -6,9 +6,10 @@ import UDexception.RoomsNotAvailable;
 import Utilities.Item;
 import Utilities.Service;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class customer {
+public class customer implements Serializable {
 // User Attributes
 
     private String customerId;
