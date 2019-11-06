@@ -138,4 +138,22 @@ public class customer implements Serializable {
             i.setStay_day(i.getStay_day() + 1);
         }
     }
+
+    public void getInfo() {
+        System.out.println("Customer Info...");
+        System.out.println("----------------");
+        System.out.println("Name: " + Name);
+        System.out.println("Contact: " + mobile);
+        System.out.println("Address: " + address);
+        System.out.println("Rooms Staying Info: ");
+        System.out.println("--------------------");
+
+        for (Room r : rooms) {
+            System.out.println("Room No: " + r.getRoomNO());
+            System.out.println("Bed No.: " + r.getBedNo());
+            System.out.println("Rent Per Day: " + r.getRentPerDay());
+            System.out.println("Stay Day: " + r.getStay_day());
+            System.out.println("--------------------------------");
+        }
+    }
 }

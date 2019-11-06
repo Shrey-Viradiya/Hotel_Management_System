@@ -14,9 +14,7 @@ import java.util.Calendar;
 import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.UUID;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+
 
 public class Hotel {
 
@@ -29,6 +27,27 @@ public class Hotel {
 
     // Employees
 //    private static LinkedList<Employee> employees = new LinkedList<Employee>();
+
+    // Room Increasing Thread
+    private static class DayChange
+            implements Runnable {
+        public void run() {
+            try {
+                while (true) {
+                    // Pause for 300 seconds
+                    Thread.sleep(300000);
+                    // Day Change
+                    for (customer c : customers) {
+                        c.addDay();
+                    }
+
+                    System.out.println("Day Change....");
+                }
+            } catch (InterruptedException e) {
+                System.out.println("Exiting Application... Closing All Threads");
+            }
+        }
+    }
 
     // Log file creation
     private static File log_file = new File("logs.txt");
@@ -114,7 +133,6 @@ public class Hotel {
             input3.close();
             fi3.close();
             TwoBedRoom.delete();
-
         }
     }
 
@@ -339,7 +357,7 @@ public class Hotel {
             while (true) {
                 Room temp;
                 temp = fetched2serve.remove_room();
-
+                temp.setStay_day(1);
                 if (temp.getBedNo() == 1) {
                     available_rooms_1bed.add(temp);
                 } else {
@@ -361,27 +379,13 @@ public class Hotel {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public static void main(String[] args) throws Exception {
         initialize();
 
-        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-        Runnable task = new Runnable() {
-            @Override
-            public void run() {
-
-                for (customer c : customers) {
-                    c.addDay();
-                }
-
-                System.out.println("Day Change....");
-            }
-        };
-        executor.schedule(task, 20, TimeUnit.SECONDS);
-
+        Thread t = new Thread(new DayChange());
+        t.start();
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -409,6 +413,7 @@ public class Hotel {
 
             switch (input) {
                 case 0:
+                    t.interrupt();
                     break Main_control_loop;
                 case 1:
                     newCustomer();
@@ -425,7 +430,8 @@ public class Hotel {
                                 System.out.println("2. Item/ Orders");
                                 System.out.println("3. Services");
                                 System.out.println("4. Check Out");
-                                System.out.println("5. Exit customer menu");
+                                System.out.println("5. Get Info");
+                                System.out.println("0. Exit customer menu");
 
                                 short innerInput;
                                 innerInput = Short.parseShort(br.readLine());
@@ -448,6 +454,9 @@ public class Hotel {
                                         checkout(fetched2serve);
                                         break CustomerMenu;
                                     case 5:
+                                        fetched2serve.getInfo();
+                                        break;
+                                    case 0:
                                         break CustomerMenu;
                                     default:
                                         System.out.println("Unexpected Value Given! Try Again! ");
@@ -520,7 +529,6 @@ public class Hotel {
         output3.close();
         fo3.close();
 
-        executor.shutdown();
     }
 
 

@@ -62,7 +62,7 @@ public class Room implements Serializable {
     //     person = x;
     // }
 
-    void setStay_day(int x) {
+    public void setStay_day(int x) {
         stay_day = x;
     }
 
