@@ -1,10 +1,8 @@
 import Hotel_basic.Room;
 import Hotel_basic.customer;
-import UDexception.CustomerNotFound;
-import UDexception.EmptyFieldException;
-import UDexception.InvalidMobileNumber;
-import UDexception.RoomsNotAvailable;
+import UDexception.*;
 import Utilities.Item;
+import Utilities.Payment;
 import Utilities.Service;
 
 import java.io.*;
@@ -25,6 +23,9 @@ public class Hotel {
     // customers
     private static LinkedList<customer> customers = new LinkedList<>();
 
+    // Vouchers Available
+    private static LinkedList<String> vouchers = new LinkedList<>();
+
     // Employees
 //    private static LinkedList<Employee> employees = new LinkedList<Employee>();
 
@@ -34,14 +35,13 @@ public class Hotel {
         public void run() {
             try {
                 while (true) {
-                    // Pause for 300 seconds
-                    Thread.sleep(300000);
+                    // Pause for 120 seconds
+                    Thread.sleep(120000);
                     // Day Change
                     for (customer c : customers) {
                         c.addDay();
                     }
-
-                    System.out.println("Day Change....");
+//                    System.out.println("Day Change....");
                 }
             } catch (InterruptedException e) {
                 System.out.println("Exiting Application... Closing All Threads");
@@ -51,6 +51,9 @@ public class Hotel {
 
     // Log file creation
     private static File log_file = new File("logs.txt");
+
+    // voucher file creation
+    private static File voucher_file = new File("vouchers.txt");
 
     // Customer file Creation
     private static File customer_data = new File("customers.txt");
@@ -133,6 +136,21 @@ public class Hotel {
             input3.close();
             fi3.close();
             TwoBedRoom.delete();
+
+            FileInputStream fi4 = new FileInputStream(voucher_file);
+            ObjectInputStream input4 = new ObjectInputStream(fi4);
+
+            try {
+                while (true) {
+                    String R = (String) input4.readObject();
+                    vouchers.add(R);
+                }
+            } catch (EOFException | ClassNotFoundException ignored) {
+            }
+
+            input4.close();
+            fi4.close();
+            voucher_file.delete();
         }
     }
 
@@ -369,6 +387,13 @@ public class Hotel {
             System.out.println("Room(s) Cleaning Done. Room(s) are now available to be used again. ");
         }
 
+        Payment checkout_payment = new Payment(fetched2serve);
+        checkout_payment.doPayment();
+        try {
+            vouchers.add(checkout_payment.generateVoucher());
+        } catch (ExpensiveOfferException ignored) {
+        }
+
         customers.remove(fetched2serve);
 
         // Writing Operations on Log File:
@@ -419,59 +444,59 @@ public class Hotel {
                     newCustomer();
                     break;
                 case 2:
-                        try {
-                            customer fetched2serve = fetchCustomer();
+                    try {
+                        customer fetched2serve = fetchCustomer();
 
-                            CustomerMenu:
-                            while (true) {
-                                // Customer Service:
-                                System.out.println("\n______________________\nCustomer Service Options");
-                                System.out.println("1. Allocate Rooms");
-                                System.out.println("2. Item/ Orders");
-                                System.out.println("3. Services");
-                                System.out.println("4. Check Out");
-                                System.out.println("5. Get Info");
-                                System.out.println("0. Exit customer menu");
+                        CustomerMenu:
+                        while (true) {
+                            // Customer Service:
+                            System.out.println("\n______________________\nCustomer Service Options");
+                            System.out.println("1. Allocate Rooms");
+                            System.out.println("2. Item/ Orders");
+                            System.out.println("3. Services");
+                            System.out.println("4. Check Out");
+                            System.out.println("5. Get Info");
+                            System.out.println("0. Exit customer menu");
 
-                                short innerInput;
-                                innerInput = Short.parseShort(br.readLine());
+                            short innerInput;
+                            innerInput = Short.parseShort(br.readLine());
 
-                                switch (innerInput) {
-                                    case 1:
-                                        try {
-                                            allocateRoom(fetched2serve);
-                                        } catch (Exception e) {
-                                            System.out.println(e.getMessage());
-                                        }
-                                        break;
-                                    case 2:
-                                        provideItem(fetched2serve);
-                                        break;
-                                    case 3:
-                                        provideService(fetched2serve);
-                                        break;
-                                    case 4:
-                                        checkout(fetched2serve);
-                                        break CustomerMenu;
-                                    case 5:
-                                        fetched2serve.getInfo();
-                                        break;
-                                    case 0:
-                                        break CustomerMenu;
-                                    default:
-                                        System.out.println("Unexpected Value Given! Try Again! ");
-                                        break;
+                            switch (innerInput) {
+                                case 1:
+                                    try {
+                                        allocateRoom(fetched2serve);
+                                    } catch (Exception e) {
+                                        System.out.println(e.getMessage());
+                                    }
+                                    break;
+                                case 2:
+                                    provideItem(fetched2serve);
+                                    break;
+                                case 3:
+                                    provideService(fetched2serve);
+                                    break;
+                                case 4:
+                                    checkout(fetched2serve);
+                                    break CustomerMenu;
+                                case 5:
+                                    fetched2serve.getInfo();
+                                    break;
+                                case 0:
+                                    break CustomerMenu;
+                                default:
+                                    System.out.println("Unexpected Value Given! Try Again! ");
+                                    break;
 
-                                }
                             }
-
-                        } catch (IOException e) {
-                            System.out.println("Input Error! Try Again..");
-                        } catch (CustomerNotFound customerNotFound) {
-                            System.out.println(customerNotFound.getMessage());
-                        } catch (Exception E) {
-                            System.out.println("Error Occured! Please Try Again..");
                         }
+
+                    } catch (IOException e) {
+                        System.out.println("Input Error! Try Again..");
+                    } catch (CustomerNotFound customerNotFound) {
+                        System.out.println(customerNotFound.getMessage());
+                    } catch (Exception E) {
+                        System.out.println("Error Occured! Please Try Again..");
+                    }
                     break;
                 case 3:
                     getInfo();
@@ -487,37 +512,46 @@ public class Hotel {
                 default:
                     System.out.println("Unexpected Value Given! Try Again! ");
                     break;
-        }
-        }
-
-
-        FileOutputStream fo = new FileOutputStream(customer_data);
-        ObjectOutputStream output = new ObjectOutputStream(fo);
-        try {
-            while (true) {
-                output.writeObject(customers.pop());
             }
-        } catch (Exception ignored) {
-
         }
-        output.close();
-        fo.close();
 
+        // writing to Files
 
-        FileOutputStream fo2 = new FileOutputStream(OneBedRoom);
-        ObjectOutputStream output2 = new ObjectOutputStream(fo2);
-        try {
-            while (true) {
-                output2.writeObject(available_rooms_1bed.pop());
+        {
+            FileOutputStream fo = new FileOutputStream(customer_data);
+            ObjectOutputStream output = new ObjectOutputStream(fo);
+            try {
+                while (true) {
+                    output.writeObject(customers.pop());
+                }
+            } catch (Exception ignored) {
+
             }
-        } catch (Exception ignored) {
-
+            output.close();
+            fo.close();
         }
-        output2.close();
-        fo2.close();
 
+        writeToFiles(OneBedRoom, available_rooms_1bed);
 
-        FileOutputStream fo3 = new FileOutputStream(TwoBedRoom);
+        writeToFiles(TwoBedRoom, available_rooms_2bed);
+
+        {
+            FileOutputStream fo2 = new FileOutputStream(voucher_file);
+            ObjectOutputStream output2 = new ObjectOutputStream(fo2);
+            try {
+                while (true) {
+                    output2.writeObject(vouchers.pop());
+                }
+            } catch (Exception ignored) {
+
+            }
+            output2.close();
+            fo2.close();
+        }
+    }
+
+    private static void writeToFiles(File twoBedRoom, LinkedList<Room> available_rooms_2bed) throws IOException {
+        FileOutputStream fo3 = new FileOutputStream(twoBedRoom);
         ObjectOutputStream output3 = new ObjectOutputStream(fo3);
         try {
             while (true) {
@@ -528,8 +562,5 @@ public class Hotel {
         }
         output3.close();
         fo3.close();
-
     }
-
-
 }

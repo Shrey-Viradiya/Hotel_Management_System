@@ -1,15 +1,24 @@
 
-New customer: (@time: 06/11/19 22:21:22): Customer: ID = 4953693c-d209-40a7-9f17-ab1ff8eb11f3 Name = Shrey Viradiya Address = 303 Nathdwara Contact No. = 7046170441
-Room Allocated: (@time: 06/11/19 22:21:22): To customer: 4953693c-d209-40a7-9f17-ab1ff8eb11f3: Room No. Room100 with no of bed(s): 1
-Item Ordered: (@time: 06/11/19 22:21:22): By customer: 4953693c-d209-40a7-9f17-ab1ff8eb11f3: Masala Dosa@ Rs. 150.0 * 1
-New customer: (@time: 06/11/19 22:21:22): Customer: ID = f2065c9f-caa6-4590-86a3-9c709e2a43e1 Name = Tirth Patek Address = 1234567890 Contact No. = 1234567890
-Room Allocated: (@time: 06/11/19 22:21:22): To customer: f2065c9f-caa6-4590-86a3-9c709e2a43e1: Room No. Room115 with no of bed(s): 2
-Service Provided: (@time: 06/11/19 22:21:22): To customer: f2065c9f-caa6-4590-86a3-9c709e2a43e1: Menicure@ Rs. 2500.0
-New customer: (@time: 06/11/19 22:25:59): Customer: ID = 8768b78e-36c3-41fb-a595-e27cd7be4c89 Name = Kenil Gajera Address = Vansh Contact No. = 2583691470
-Room Allocated: (@time: 06/11/19 22:25:59): To customer: 8768b78e-36c3-41fb-a595-e27cd7be4c89: Room No. Room101 with no of bed(s): 1
-Item Ordered: (@time: 06/11/19 22:25:59): By customer: 8768b78e-36c3-41fb-a595-e27cd7be4c89: Organo Sandwich@ Rs. 100.0 * 2
-Customer Checked Out: (@time: 06/11/19 22:25:59): Customer: ID = 8768b78e-36c3-41fb-a595-e27cd7be4c89 Name = Kenil Gajera Address = Vansh Contact No. = 2583691470
-New customer: (@time: 06/11/19 22:25:59): Customer: ID = 4cd9828c-c0ab-424b-b0cd-2ae696cdc314 Name = Manish Gupta Address = Center Point Contact No. = 1478523690
-Room Allocated: (@time: 06/11/19 22:25:59): To customer: 4cd9828c-c0ab-424b-b0cd-2ae696cdc314: Room No. Room116 with no of bed(s): 2
-Service Provided: (@time: 06/11/19 22:25:59): To customer: 4cd9828c-c0ab-424b-b0cd-2ae696cdc314: Car Wash@ Rs. 2500.0
-Service Provided: (@time: 06/11/19 22:35:02): To customer: 4953693c-d209-40a7-9f17-ab1ff8eb11f3: Spa@ Rs. 2400.0
+New customer: (@time: 09/11/19 00:34:56): Customer: ID = 3f4e1e9e-592f-4034-9af3-3de56c086e06 Name = Shrey Viradiya Address = 303 Nathdwara Contact No. = 7046170441
+Room Allocated: (@time: 09/11/19 00:34:56): To customer: 3f4e1e9e-592f-4034-9af3-3de56c086e06: Room No. Room115 with no of bed(s): 2
+New customer: (@time: 09/11/19 00:34:56): Customer: ID = 8f3ddcb6-9a6a-439b-a8ee-9ec567f36df2 Name = Kenil Gajera Address = Vansh Residency Contact No. = 5825825825
+Room Allocated: (@time: 09/11/19 00:34:56): To customer: 8f3ddcb6-9a6a-439b-a8ee-9ec567f36df2: Room No. Room100 with no of bed(s): 1
+Item Ordered: (@time: 09/11/19 00:34:56): By customer: 3f4e1e9e-592f-4034-9af3-3de56c086e06: Sandwich@ Rs. 150.0 * 2
+Service Provided: (@time: 09/11/19 00:34:56): To customer: 3f4e1e9e-592f-4034-9af3-3de56c086e06: Car Wash@ Rs. 2500.0
+New customer: (@time: 09/11/19 00:34:56): Customer: ID = 5dd7d38a-f475-4b90-9456-c91ccfb79459 Name = Tirth Patek Address = Happy Contact No. = 2541254125
+Room Allocated: (@time: 09/11/19 00:34:56): To customer: 5dd7d38a-f475-4b90-9456-c91ccfb79459: Room No. Room116 with no of bed(s): 2
+Item Ordered: (@time: 09/11/19 00:34:56): By customer: 8f3ddcb6-9a6a-439b-a8ee-9ec567f36df2: Hot and Sour Soup@ Rs. 100.0 * 2
+Customer Checked Out: (@time: 09/11/19 00:34:56): Customer: ID = 8f3ddcb6-9a6a-439b-a8ee-9ec567f36df2 Name = Kenil Gajera Address = Vansh Residency Contact No. = 5825825825
+New customer: (@time: 09/11/19 00:45:59): Customer: ID = 17c8eb1a-5827-4067-abbe-c4efadc24743 Name = Manish Gupta Address = Centre Point Contact No. = 7854785478
+Room Allocated: (@time: 09/11/19 00:45:59): To customer: 17c8eb1a-5827-4067-abbe-c4efadc24743: Room No. Room101 with no of bed(s): 1
+Service Provided: (@time: 09/11/19 00:45:59): To customer: 17c8eb1a-5827-4067-abbe-c4efadc24743: Laundry@ Rs. 250.0
+New customer: (@time: 09/11/19 00:45:59): Customer: ID = ea08049c-4406-491b-af6f-ab1434bbd2ec Name = Tirth Hihoriya Address = Maa Contact No. = 1258963254
+Room Allocated: (@time: 09/11/19 00:45:59): To customer: ea08049c-4406-491b-af6f-ab1434bbd2ec: Room No. Room117 with no of bed(s): 2
+Room Allocated: (@time: 09/11/19 00:45:59): To customer: ea08049c-4406-491b-af6f-ab1434bbd2ec: Room No. Room118 with no of bed(s): 2
+Room Allocated: (@time: 09/11/19 00:45:59): To customer: ea08049c-4406-491b-af6f-ab1434bbd2ec: Room No. Room119 with no of bed(s): 2
+Item Ordered: (@time: 09/11/19 00:45:59): By customer: ea08049c-4406-491b-af6f-ab1434bbd2ec: OxiDontes@ Rs. 1200.0 * 5
+Customer Checked Out: (@time: 09/11/19 00:45:59): Customer: ID = 5dd7d38a-f475-4b90-9456-c91ccfb79459 Name = Tirth Patek Address = Happy Contact No. = 2541254125
+New customer: (@time: 09/11/19 00:51:55): Customer: ID = 496422dd-e0d7-4de7-90f0-47d07cc5676e Name = Omni Patel Address = Ponget Colony Contact No. = 2587413690
+Room Allocated: (@time: 09/11/19 00:51:55): To customer: 496422dd-e0d7-4de7-90f0-47d07cc5676e: Room No. Room102 with no of bed(s): 1
+Room Allocated: (@time: 09/11/19 00:51:55): To customer: 496422dd-e0d7-4de7-90f0-47d07cc5676e: Room No. Room103 with no of bed(s): 1
+Customer Checked Out: (@time: 09/11/19 00:51:55): Customer: ID = 3f4e1e9e-592f-4034-9af3-3de56c086e06 Name = Shrey Viradiya Address = 303 Nathdwara Contact No. = 7046170441

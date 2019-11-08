@@ -44,6 +44,24 @@ public class customer implements Serializable {
         return mobile;
     }
 
+    public double getTotal() {
+        double total = 0;
+
+        for (Room x : rooms) {
+            total += x.getStay_day() * x.getRentPerDay();
+        }
+
+        for (Item i : items) {
+            total += i.getQuantity() * i.getPricePerUnit();
+        }
+
+        for (Service S : services) {
+            total += S.getPrice();
+        }
+
+        return total;
+    }
+
     // Set methods
 
     public void setCustomerID(String customerId){
