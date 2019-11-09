@@ -69,22 +69,20 @@ public class Hotel {
     private static Calendar calobj = Calendar.getInstance();
 
     private static void initialize() throws IOException {
-//        {
-//            System.out.println("Creating Hotel System: ");
-//            System.out.println("-----------------------");
-//
-//            System.out.println("Allocating Rooms");
-//            System.out.println("----------------");
-//
-//            for (int i = 0; i < 15; i++) {
-//                available_rooms_1bed.add(new Room(i, 1, 1000));
-//            }
-//            for (int i = 15; i < 30; i++) {
-//                available_rooms_2bed.add(new Room(i, 2, 1800));
-//            }
-//        }
+        if (!(customer_data.exists()) || !(OneBedRoom.exists()) || !(TwoBedRoom.exists())) {
+            System.out.println("Creating Hotel System: ");
+            System.out.println("-----------------------");
 
-        {
+            System.out.println("Allocating Rooms");
+            System.out.println("----------------");
+
+            for (int i = 0; i < 15; i++) {
+                available_rooms_1bed.add(new Room(i, 1, 1000));
+            }
+            for (int i = 15; i < 30; i++) {
+                available_rooms_2bed.add(new Room(i, 2, 1800));
+            }
+        } else {
 
             System.out.println("Initializing Hotel System: ");
             System.out.println("-----------------------");
@@ -370,6 +368,8 @@ public class Hotel {
 
     private static void checkout(customer fetched2serve) {
         fetched2serve.generate_bill();
+        Payment checkout_payment = new Payment(fetched2serve.getTotal());
+
 
         try {
             while (true) {
@@ -387,7 +387,7 @@ public class Hotel {
             System.out.println("Room(s) Cleaning Done. Room(s) are now available to be used again. ");
         }
 
-        Payment checkout_payment = new Payment(fetched2serve);
+
         checkout_payment.doPayment();
         try {
             vouchers.add(checkout_payment.generateVoucher());
@@ -418,7 +418,7 @@ public class Hotel {
         while (true) {
             System.out.println("\n\n______________________");
             System.out.println("Welcome to Hotel JavaKania Management System");
-            System.out.println("______________________\n\n");
+            System.out.println("_____________________\n\n");
             System.out.println("1. Add New Customer");
             System.out.println("2. Fetch the Customer");
             System.out.println("3. Get Info");
@@ -456,6 +456,7 @@ public class Hotel {
                             System.out.println("3. Services");
                             System.out.println("4. Check Out");
                             System.out.println("5. Get Info");
+                            System.out.println("6. Avail Voucher Offer");
                             System.out.println("0. Exit customer menu");
 
                             short innerInput;
@@ -481,6 +482,26 @@ public class Hotel {
                                 case 5:
                                     fetched2serve.getInfo();
                                     break;
+                                case 6:
+                                    System.out.println("Enter Voucher Code:");
+                                    String temp = br.readLine();
+                                    if (vouchers.contains(temp)) {
+                                        if (temp.contains("_CarWash3000_")) {
+                                            fetched2serve.addService(new Service("CarWash", 0));
+                                        } else if (temp.contains("_Spa&Massage5000_")) {
+                                            fetched2serve.addService(new Service("Spa & Massage", 0));
+                                        } else if (temp.contains("_FreeDrinksFor1Night8000_")) {
+                                            fetched2serve.addItem(new Item("Free Drinks", 25, 0));
+                                        }
+                                        vouchers.remove(temp);
+                                    } else {
+                                        System.out.println("Invalid Voucher Code...\n\n");
+                                    }
+
+                                    break;
+                                case 7:
+                                    System.out.println("Total: " + fetched2serve.getTotal());
+                                    break;
                                 case 0:
                                     break CustomerMenu;
                                 default:
@@ -495,7 +516,7 @@ public class Hotel {
                     } catch (CustomerNotFound customerNotFound) {
                         System.out.println(customerNotFound.getMessage());
                     } catch (Exception E) {
-                        System.out.println("Error Occured! Please Try Again..");
+                        System.out.println("Error Occurred! Please Try Again..");
                     }
                     break;
                 case 3:
