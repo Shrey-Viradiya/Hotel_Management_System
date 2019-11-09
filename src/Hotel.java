@@ -41,7 +41,15 @@ public class Hotel {
                     for (customer c : customers) {
                         c.addDay();
                     }
-//                    System.out.println("Day Change....");
+
+                    // Writing Operations on Log File:
+                    try {
+                        PrintWriter output = new PrintWriter(new FileOutputStream(log_file, true));
+                        output.append("\nDay Change");
+                        output.close();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                 }
             } catch (InterruptedException e) {
                 System.out.println("Exiting Application... Closing All Threads");
