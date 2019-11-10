@@ -8,10 +8,7 @@ import Utilities.Service;
 import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.InputMismatchException;
-import java.util.LinkedList;
-import java.util.UUID;
+import java.util.*;
 
 public class Hotel {
 
@@ -72,7 +69,7 @@ public class Hotel {
     private static File TwoBedRoom = new File("TwoBedRoom.txt");
 
     // Register file creation
-    private static File Register = new File("Register.txt");
+    private static File Register = new File("Register.csv");
 
     // Date_time variables
     private static DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
@@ -249,8 +246,8 @@ public class Hotel {
         }
 
         // Writing to Register File:
-        FileWriter csvWriter = new FileWriter(Register);
-        csvWriter.append(temp.getCustomerID()).append(',').append(temp.getName()).append(',').append(time).append('\n');
+        FileWriter csvWriter = new FileWriter(Register, true);
+        csvWriter.append(temp.getCustomerID()).append(',').append(temp.getName()).append(',').append(time).append(',').append(" ").append('\n');
         csvWriter.flush();
         csvWriter.close();
 
@@ -383,7 +380,7 @@ public class Hotel {
         throw new CustomerNotFound("No customer with given mobile number is registered.");
     }
 
-    private static void checkout(customer fetched2serve) {
+    private static void checkout(customer fetched2serve) throws IOException {
         fetched2serve.generate_bill();
         Payment checkout_payment = new Payment(fetched2serve.getTotal());
 
@@ -413,18 +410,50 @@ public class Hotel {
 
 
         customers.remove(fetched2serve);
+        String CheckOutDateTime = df.format(calobj.getTime());
 
         // Writing Operations on Log File:
         try {
             PrintWriter output = new PrintWriter(new FileOutputStream(log_file, true));
-            output.append("\nCustomer Checked Out: (@time: ").append(df.format(calobj.getTime())).append("): ").append(String.valueOf(fetched2serve));
+            output.append("\nCustomer Checked Out: (@time: ").append(CheckOutDateTime).append("): ").append(String.valueOf(fetched2serve));
             output.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
         // Editing Register
+        File newReg = new File("temp.csv");
+        Scanner x = new Scanner(Register);
+        x.useDelimiter("[,\n]");
+        try {
+            FileWriter csvWriter = new FileWriter(Register, true);
+            BufferedWriter bw = new BufferedWriter(csvWriter);
+            PrintWriter pw = new PrintWriter(bw);
 
+            while (x.hasNext()) {
+                String ID = x.next();
+                String Name = x.next();
+                String CheckIn = x.next();
+                String CheckOut = x.next();
+
+                if (ID.equals(fetched2serve.getCustomerID())) {
+                    pw.println(fetched2serve.getCustomerID() + "," + fetched2serve.getName() + "," + CheckIn + "," + CheckOutDateTime + "\n");
+                } else {
+                    pw.println(ID + "," + Name + "," + CheckIn + "," + CheckOut + "\n");
+                }
+            }
+            x.close();
+            pw.flush();
+            pw.close();
+            csvWriter.close();
+            Register.delete();
+            File dump = new File("Register.csv");
+            newReg.renameTo(dump);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Register might not have updated...");
+        }
     }
 
     public static void main(String[] args) throws Exception {

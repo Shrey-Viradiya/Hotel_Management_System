@@ -21,17 +21,17 @@ public class Payment {
         Random rand = new Random();
         String Voucher = "" + rand.nextInt(1000000000);
 
-        if (Total > 5000 && Total < 10000) {
+        if (Total <= 5000) {
+            throw new ExpensiveOfferException("Not enough Bill amount to provide a voucher...");
+        } else if (Total > 5000 && Total < 10000) {
             Voucher += "_CarWash3000_";
             System.out.println(" \n\nYou have won a voucher code of\nFree Car Wash worth 3000 INR\nPlease Note Your Voucher Code:\n_______________________\n" + Voucher);
-        } else if (Total < 20000) {
+        } else if (Total >= 10000 & Total < 20000) {
             Voucher += "_Spa&Massage5000_";
             System.out.println(" \n\nYou have won a voucher code of\nFree Spa & Massage worth 5000 INR\nPlease Note Your Voucher Code:\n_______________________\n" + Voucher);
         } else if (Total >= 20000) {
             Voucher += "_FreeDrinksFor1Night8000_";
             System.out.println(" \n\nYou have won a voucher code of\nFree drinks for a night worth 8000 INR\nPlease Note Your Voucher Code:\n_______________________\n" + Voucher);
-        } else {
-            throw new ExpensiveOfferException("Not enough Bill amount to provide a voucher...");
         }
         return Voucher;
     }
