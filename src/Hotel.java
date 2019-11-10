@@ -13,7 +13,6 @@ import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.UUID;
 
-
 public class Hotel {
 
     // Available Rooms
@@ -71,6 +70,9 @@ public class Hotel {
 
     // TwoBedRoom file creation
     private static File TwoBedRoom = new File("TwoBedRoom.txt");
+
+    // Register file creation
+    private static File Register = new File("Register.txt");
 
     // Date_time variables
     private static DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
@@ -235,15 +237,22 @@ public class Hotel {
 
         customers.add(temp);
 
+        final String time = df.format(calobj.getTime());
+
         // Writing Operations on Log File:
         try {
             PrintWriter output = new PrintWriter(new FileOutputStream(log_file, true));
-            output.append("\nNew customer: (@time: ").append(df.format(calobj.getTime())).append("): ").append(String.valueOf(temp));
+            output.append("\nNew customer: (@time: ").append(time).append("): ").append(String.valueOf(temp));
             output.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
+        // Writing to Register File:
+        FileWriter csvWriter = new FileWriter(Register);
+        csvWriter.append(temp.getCustomerID()).append(',').append(temp.getName()).append(',').append(time).append('\n');
+        csvWriter.flush();
+        csvWriter.close();
 
     }
 
@@ -402,6 +411,7 @@ public class Hotel {
         } catch (ExpensiveOfferException ignored) {
         }
 
+
         customers.remove(fetched2serve);
 
         // Writing Operations on Log File:
@@ -412,6 +422,9 @@ public class Hotel {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+        // Editing Register
+
     }
 
     public static void main(String[] args) throws Exception {
