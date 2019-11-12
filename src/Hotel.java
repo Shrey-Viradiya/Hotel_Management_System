@@ -186,7 +186,7 @@ public class Hotel {
         System.out.println("Two bed Rooms: " + available_rooms_2bed.size() + " Rooms available");
     }
 
-    private static void newCustomer() throws IOException {
+    private static customer newCustomer() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 //        Scanner S = new Scanner(System.in);
         customer temp = new customer();
@@ -246,11 +246,12 @@ public class Hotel {
         }
 
         // Writing to Register File:
-        FileWriter csvWriter = new FileWriter(Register, true);
+        FileWriter csvWriter = new FileWriter(Register,true);
         csvWriter.append(temp.getCustomerID()).append(',').append(temp.getName()).append(',').append(time).append(',').append(" ").append('\n');
         csvWriter.flush();
         csvWriter.close();
 
+        return temp;
     }
 
     private static void provideItem(customer c) throws IOException {
@@ -324,6 +325,7 @@ public class Hotel {
         for (int i = 0; i < one; i++) {
             Room temp = available_rooms_1bed.pop();
             c.addRoom(temp);
+            System.out.println("RoomNo " + temp.getRoomNO() + " Allocated..");
             // Writing Operations on Log File:
             try {
                 PrintWriter output = new PrintWriter(new FileOutputStream(log_file, true));
@@ -337,6 +339,7 @@ public class Hotel {
         for (int i = 0; i < two; i++) {
             Room temp = available_rooms_2bed.pop();
             c.addRoom(temp);
+            System.out.println("RoomNo " + temp.getRoomNO() + " Allocated..");
             // Writing Operations on Log File:
             try {
                 PrintWriter output = new PrintWriter(new FileOutputStream(log_file, true));
@@ -346,6 +349,200 @@ public class Hotel {
                 e.printStackTrace();
             }
         }
+    }
+
+    private static void serve(customer c){
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        try {
+
+            CustomerMenu:
+            while (true) {
+                // Customer Service:
+                System.out.println("\n______________________\nCustomer Service Options");
+                System.out.println("1. Allocate Rooms");
+                System.out.println("2. Item/ Orders");
+                System.out.println("3. Services");
+                System.out.println("4. Check Out");
+                System.out.println("5. Get Info");
+                System.out.println("6. Avail Voucher Offer");
+                System.out.println("0. Exit customer menu");
+
+                short innerInput;
+                innerInput = Short.parseShort(br.readLine());
+
+                switch (innerInput) {
+                    case 1:
+                        try {
+                            allocateRoom(c);
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+                        break;
+                    case 2:
+                        provideItem(c);
+                        break;
+                    case 3:
+                        provideService(c);
+                        break;
+                    case 4:
+                        checkout(c);
+                        break CustomerMenu;
+                    case 5:
+                        c.getInfo();
+                        break;
+                    case 6:
+                        System.out.println("Enter Voucher Code:");
+                        String temp = br.readLine();
+                        if (vouchers.contains(temp)) {
+                            if (temp.contains("_CarWash3000_")) {
+                                c.addService(new Service("CarWash", 0));
+                            } else if (temp.contains("_Spa&Massage5000_")) {
+                                c.addService(new Service("Spa & Massage", 0));
+                            } else if (temp.contains("_FreeDrinksFor1Night8000_")) {
+                                c.addItem(new Item("Free Drinks", 25, 0));
+                            }
+                            vouchers.remove(temp);
+                        } else {
+                            System.out.println("Invalid Voucher Code...\n\n");
+                        }
+
+                        break;
+                    case 7:
+                        System.out.println("Total: " + c.getTotal());
+                        break;
+                    case 0:
+                        break CustomerMenu;
+                    default:
+                        System.out.println("Unexpected Value Given! Try Again! ");
+                        break;
+
+                }
+            }
+
+        } catch (IOException e) {
+            System.out.println("Input Error! Try Again..");
+        } catch (Exception E) {
+            System.out.println("Error Occurred! Please Try Again..");
+        }
+    }
+
+    private static void serve(){
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            customer fetched2serve = fetchCustomer();
+
+            CustomerMenu:
+            while (true) {
+                // Customer Service:
+                System.out.println("\n______________________\nCustomer Service Options");
+                System.out.println("1. Allocate Rooms");
+                System.out.println("2. Item/ Orders");
+                System.out.println("3. Services");
+                System.out.println("4. Check Out");
+                System.out.println("5. Get Info");
+                System.out.println("6. Avail Voucher Offer");
+                System.out.println("0. Exit customer menu");
+
+                short innerInput;
+                innerInput = Short.parseShort(br.readLine());
+
+                switch (innerInput) {
+                    case 1:
+                        try {
+                            allocateRoom(fetched2serve);
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+                        break;
+                    case 2:
+                        provideItem(fetched2serve);
+                        break;
+                    case 3:
+                        provideService(fetched2serve);
+                        break;
+                    case 4:
+                        checkout(fetched2serve);
+                        break CustomerMenu;
+                    case 5:
+                        fetched2serve.getInfo();
+                        break;
+                    case 6:
+                        System.out.println("Enter Voucher Code:");
+                        String temp = br.readLine();
+                        if (vouchers.contains(temp)) {
+                            if (temp.contains("_CarWash3000_")) {
+                                fetched2serve.addService(new Service("CarWash", 0));
+                            } else if (temp.contains("_Spa&Massage5000_")) {
+                                fetched2serve.addService(new Service("Spa & Massage", 0));
+                            } else if (temp.contains("_FreeDrinksFor1Night8000_")) {
+                                fetched2serve.addItem(new Item("Free Drinks", 25, 0));
+                            }
+                            vouchers.remove(temp);
+                        } else {
+                            System.out.println("Invalid Voucher Code...\n\n");
+                        }
+
+                        break;
+                    case 7:
+                        System.out.println("Total: " + fetched2serve.getTotal());
+                        break;
+                    case 0:
+                        break CustomerMenu;
+                    default:
+                        System.out.println("Unexpected Value Given! Try Again! ");
+                        break;
+
+                }
+            }
+
+        } catch (IOException e) {
+            System.out.println("Input Error! Try Again..");
+        } catch (CustomerNotFound customerNotFound) {
+            System.out.println(customerNotFound.getMessage());
+        } catch (Exception E) {
+            System.out.println("Error Occurred! Please Try Again..");
+        }
+    }
+
+    private static void serveByRoom(){
+        try {
+            customer fetched2serve = fetchByRoom();
+            serve(fetched2serve);
+        } catch (IOException | CustomerNotFound e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static customer fetchByRoom() throws IOException, CustomerNotFound {
+        // Searching for the Customer
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.println("Enter the RoomNo: ");
+        String room2search;
+
+        room2search = br.readLine().toLowerCase();
+
+        for (Room r:available_rooms_1bed ) {
+            if (r.getRoomNO().toLowerCase().contains(room2search)){
+                throw new CustomerNotFound("Room is not allocated Yet");
+            }
+        }
+
+        for (Room r:available_rooms_2bed ) {
+            if (r.getRoomNO().toLowerCase().contains(room2search)){
+                throw new CustomerNotFound("Room is not allocated Yet");
+            }
+        }
+
+        for (customer C: customers ) {
+            for (Room r: C.getRooms()) {
+                if (r.getRoomNO().toLowerCase().contains(room2search)){
+                    return C;
+                }
+            }
+        }
+
+        throw new CustomerNotFound("Check the Room Number Entered...");
     }
 
     private static customer fetchCustomer() throws IOException, CustomerNotFound {
@@ -383,7 +580,6 @@ public class Hotel {
     private static void checkout(customer fetched2serve) throws IOException {
         fetched2serve.generate_bill();
         Payment checkout_payment = new Payment(fetched2serve.getTotal());
-
 
         try {
             while (true) {
@@ -426,20 +622,21 @@ public class Hotel {
         Scanner x = new Scanner(Register);
         x.useDelimiter("[,\n]");
         try {
-            FileWriter csvWriter = new FileWriter(Register, true);
+            FileWriter csvWriter = new FileWriter(newReg, true);
             BufferedWriter bw = new BufferedWriter(csvWriter);
             PrintWriter pw = new PrintWriter(bw);
 
-            while (x.hasNext()) {
+            while(x.hasNext()){
                 String ID = x.next();
                 String Name = x.next();
                 String CheckIn = x.next();
                 String CheckOut = x.next();
 
-                if (ID.equals(fetched2serve.getCustomerID())) {
-                    pw.println(fetched2serve.getCustomerID() + "," + fetched2serve.getName() + "," + CheckIn + "," + CheckOutDateTime + "\n");
-                } else {
-                    pw.println(ID + "," + Name + "," + CheckIn + "," + CheckOut + "\n");
+                if(ID.equals(fetched2serve.getCustomerID())){
+                    pw.append(fetched2serve.getCustomerID()).append(",").append(fetched2serve.getName()).append(",").append(CheckIn).append(",").append(CheckOutDateTime).append("\n");
+                }
+                else{
+                    pw.append(ID+","+Name+","+CheckIn+","+CheckOut + "\n");
                 }
             }
             x.close();
@@ -447,10 +644,10 @@ public class Hotel {
             pw.close();
             csvWriter.close();
             Register.delete();
-            File dump = new File("Register.csv");
-            newReg.renameTo(dump);
+            newReg.renameTo(new File("Register.csv"));
 
-        } catch (Exception e) {
+        }
+        catch(Exception e){
             e.printStackTrace();
             System.out.println("Register might not have updated...");
         }
@@ -471,8 +668,10 @@ public class Hotel {
             System.out.println("_____________________\n\n");
             System.out.println("1. Add New Customer");
             System.out.println("2. Fetch the Customer");
-            System.out.println("3. Get Info");
-            System.out.println("4. Get Customers");
+            System.out.println("3. Fetch by Room");
+            System.out.println("4. Get Info");
+            System.out.println("5. Get Customers");
+            System.out.println("6. Clear Screen");
             System.out.println("0. Quit");
             System.out.println("______________________\n\n");
             System.out.println("Enter Your choice: ");
@@ -491,94 +690,27 @@ public class Hotel {
                     t.interrupt();
                     break Main_control_loop;
                 case 1:
-                    newCustomer();
+                    serve(newCustomer());
                     break;
                 case 2:
-                    try {
-                        customer fetched2serve = fetchCustomer();
-
-                        CustomerMenu:
-                        while (true) {
-                            // Customer Service:
-                            System.out.println("\n______________________\nCustomer Service Options");
-                            System.out.println("1. Allocate Rooms");
-                            System.out.println("2. Item/ Orders");
-                            System.out.println("3. Services");
-                            System.out.println("4. Check Out");
-                            System.out.println("5. Get Info");
-                            System.out.println("6. Avail Voucher Offer");
-                            System.out.println("0. Exit customer menu");
-
-                            short innerInput;
-                            innerInput = Short.parseShort(br.readLine());
-
-                            switch (innerInput) {
-                                case 1:
-                                    try {
-                                        allocateRoom(fetched2serve);
-                                    } catch (Exception e) {
-                                        System.out.println(e.getMessage());
-                                    }
-                                    break;
-                                case 2:
-                                    provideItem(fetched2serve);
-                                    break;
-                                case 3:
-                                    provideService(fetched2serve);
-                                    break;
-                                case 4:
-                                    checkout(fetched2serve);
-                                    break CustomerMenu;
-                                case 5:
-                                    fetched2serve.getInfo();
-                                    break;
-                                case 6:
-                                    System.out.println("Enter Voucher Code:");
-                                    String temp = br.readLine();
-                                    if (vouchers.contains(temp)) {
-                                        if (temp.contains("_CarWash3000_")) {
-                                            fetched2serve.addService(new Service("CarWash", 0));
-                                        } else if (temp.contains("_Spa&Massage5000_")) {
-                                            fetched2serve.addService(new Service("Spa & Massage", 0));
-                                        } else if (temp.contains("_FreeDrinksFor1Night8000_")) {
-                                            fetched2serve.addItem(new Item("Free Drinks", 25, 0));
-                                        }
-                                        vouchers.remove(temp);
-                                    } else {
-                                        System.out.println("Invalid Voucher Code...\n\n");
-                                    }
-
-                                    break;
-                                case 7:
-                                    System.out.println("Total: " + fetched2serve.getTotal());
-                                    break;
-                                case 0:
-                                    break CustomerMenu;
-                                default:
-                                    System.out.println("Unexpected Value Given! Try Again! ");
-                                    break;
-
-                            }
-                        }
-
-                    } catch (IOException e) {
-                        System.out.println("Input Error! Try Again..");
-                    } catch (CustomerNotFound customerNotFound) {
-                        System.out.println(customerNotFound.getMessage());
-                    } catch (Exception E) {
-                        System.out.println("Error Occurred! Please Try Again..");
-                    }
+                    serve();
                     break;
                 case 3:
-                    getInfo();
+                    serveByRoom();
                     break;
                 case 4:
+                    getInfo();
+                    break;
+                case 5:
                     System.out.println("Customers............");
                     System.out.println("_____________________");
 
                     for (customer c : customers) {
                         System.out.println(c.getName());
                     }
+                    break;
+                case 6:
+                    new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
                     break;
                 default:
                     System.out.println("Unexpected Value Given! Try Again! ");

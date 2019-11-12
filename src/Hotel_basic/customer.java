@@ -44,6 +44,8 @@ public class customer implements Serializable {
         return mobile;
     }
 
+    public LinkedList<Room> getRooms(){ return rooms; }
+
     public double getTotal() {
         double total = 0;
 
