@@ -1,0 +1,11 @@
+New customer: (@time: 12/11/19 12:28:54): Customer: ID = 0da3ae30-319f-435c-9e02-5102f3e8502c Name = Shrey Viradiya Address = 303 Nathdwara Contact No. = 7046170441
+Room Allocated: (@time: 12/11/19 12:28:54): To customer: 0da3ae30-319f-435c-9e02-5102f3e8502c: Room No. Room100 with no of bed(s): 1
+Room Allocated: (@time: 12/11/19 12:28:54): To customer: 0da3ae30-319f-435c-9e02-5102f3e8502c: Room No. Room101 with no of bed(s): 1
+Room Allocated: (@time: 12/11/19 12:28:54): To customer: 0da3ae30-319f-435c-9e02-5102f3e8502c: Room No. Room102 with no of bed(s): 1
+Room Allocated: (@time: 12/11/19 12:28:54): To customer: 0da3ae30-319f-435c-9e02-5102f3e8502c: Room No. Room103 with no of bed(s): 1
+Room Allocated: (@time: 12/11/19 12:28:54): To customer: 0da3ae30-319f-435c-9e02-5102f3e8502c: Room No. Room104 with no of bed(s): 1
+Room Allocated: (@time: 12/11/19 12:28:54): To customer: 0da3ae30-319f-435c-9e02-5102f3e8502c: Room No. Room105 with no of bed(s): 1
+Room Allocated: (@time: 12/11/19 12:28:54): To customer: 0da3ae30-319f-435c-9e02-5102f3e8502c: Room No. Room106 with no of bed(s): 1
+Room Allocated: (@time: 12/11/19 12:28:54): To customer: 0da3ae30-319f-435c-9e02-5102f3e8502c: Room No. Room107 with no of bed(s): 1
+Room Allocated: (@time: 12/11/19 12:28:54): To customer: 0da3ae30-319f-435c-9e02-5102f3e8502c: Room No. Room108 with no of bed(s): 1
+Room Allocated: (@time: 12/11/19 12:28:54): To customer: 0da3ae30-319f-435c-9e02-5102f3e8502c: Room No. Room109 with no of bed(s): 1
