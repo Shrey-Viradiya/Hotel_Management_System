@@ -76,6 +76,13 @@ public class Hotel {
     private static Calendar calobj = Calendar.getInstance();
 
     private static void initialize() throws IOException {
+
+System.out.println(" _    _       _       _        _                  _  __           _       ");
+System.out.println("| |  | |     | |     | |      | |                | |/ /          (_)");
+System.out.println("| |__| | ___ | |_ ___| |      | | __ ___   ____ _| ' / __ _ _ __  _  __ _ ");
+System.out.println("|  __  |/ _ \\| __/ _ \\ |  _   | |/ _` \\ \\ / / _` |  < / _` | '_ \\| |/ _` |" );
+System.out.println("| |  | | (_) | ||  __/ | | |__| | (_| |\\ V / (_| | . \\ (_| | | | | | (_| |");
+System.out.println("|_|  |_|\\___/ \\__\\___|_|  \\____/ \\__,_| \\_/ \\__,_|_|\\_\\__,_|_| |_|_|\\__,_|");
         if (!(customer_data.exists()) || !(OneBedRoom.exists()) || !(TwoBedRoom.exists())) {
             System.out.println("Creating Hotel System: ");
             System.out.println("-----------------------");
