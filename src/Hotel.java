@@ -9,6 +9,8 @@ import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Hotel {
 
@@ -77,12 +79,12 @@ public class Hotel {
 
     private static void initialize() throws IOException {
 
-System.out.println(" _    _       _       _        _                  _  __           _       ");
-System.out.println("| |  | |     | |     | |      | |                | |/ /          (_)");
-System.out.println("| |__| | ___ | |_ ___| |      | | __ ___   ____ _| ' / __ _ _ __  _  __ _ ");
-System.out.println("|  __  |/ _ \\| __/ _ \\ |  _   | |/ _` \\ \\ / / _` |  < / _` | '_ \\| |/ _` |" );
-System.out.println("| |  | | (_) | ||  __/ | | |__| | (_| |\\ V / (_| | . \\ (_| | | | | | (_| |");
-System.out.println("|_|  |_|\\___/ \\__\\___|_|  \\____/ \\__,_| \\_/ \\__,_|_|\\_\\__,_|_| |_|_|\\__,_|");
+System.out.println(" _    _       _       _     _____ _           _ _                                  \n" +
+        "| |  | |     | |     | |   / ____| |         | (_)                                 \n" +
+        "| |__| | ___ | |_ ___| |  | (___ | |__   __ _| |_ _ __ ___   __ _  __ _  __ _ _ __ \n" +
+        "|  __  |/ _ \\| __/ _ \\ |   \\___ \\| '_ \\ / _` | | | '_ ` _ \\ / _` |/ _` |/ _` | '__|\n" +
+        "| |  | | (_) | ||  __/ |   ____) | | | | (_| | | | | | | | | (_| | (_| | (_| | |   \n" +
+        "|_|  |_|\\___/ \\__\\___|_|  |_____/|_| |_|\\__,_|_|_|_| |_| |_|\\__,_|\\__,_|\\__,_|_|   ");
         if (!(customer_data.exists()) || !(OneBedRoom.exists()) || !(TwoBedRoom.exists())) {
             System.out.println("Creating Hotel System: ");
             System.out.println("-----------------------");
@@ -170,10 +172,18 @@ System.out.println("|_|  |_|\\___/ \\__\\___|_|  \\____/ \\__,_| \\_/ \\__,_|_|\
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 //        Scanner S = new Scanner(System.in);
         int one, two;
+        while(true) {
+        try{
 
-        System.out.println("Enter the no. of 1 bed rooms and 2 bed room wanted...");
-        one = Integer.parseInt(br.readLine());
-        two = Integer.parseInt(br.readLine());
+                System.out.println("Enter the no. of 1 bed rooms and 2 bed room wanted...");
+                one = Integer.parseInt(br.readLine());
+                two = Integer.parseInt(br.readLine());
+                break;
+
+        }catch (NumberFormatException ignored){
+            System.out.println("Please Enter a valid Number of rooms");
+        }
+        }
 //        one = S.nextInt();
 //        two = S.nextInt();
 
@@ -195,6 +205,8 @@ System.out.println("|_|  |_|\\___/ \\__\\___|_|  \\____/ \\__,_| \\_/ \\__,_|_|\
 
     private static customer newCustomer() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+
 //        Scanner S = new Scanner(System.in);
         customer temp = new customer();
 
@@ -204,9 +216,20 @@ System.out.println("|_|  |_|\\___/ \\__\\___|_|  \\____/ \\__,_| \\_/ \\__,_|_|\
         while (true) {
             System.out.println("Enter the Name: ");
             try {
-                temp.setName(br.readLine());
+                Pattern specialCharPattern = Pattern.compile("[`~!@#$%^&.*()/*-+,<>;:?{}=_]");
+                String Name = br.readLine();
+
+                if (Name == null || Name.trim().isEmpty()) {
+                    throw new EmptyFieldException("Name Empty Not Valid! Try Again...");
+                }
+                Matcher m = specialCharPattern.matcher(Name);
+                boolean b = m.find();
+                if(b){
+                    throw new SpecialCharNotAllowed("Special Characters are not allowed in Name. Try Again.");
+                }
+                temp.setName(Name);
                 break;
-            } catch (EmptyFieldException | IOException e) {
+            } catch (SpecialCharNotAllowed| EmptyFieldException | IOException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -214,9 +237,20 @@ System.out.println("|_|  |_|\\___/ \\__\\___|_|  \\____/ \\__,_| \\_/ \\__,_|_|\
         while (true) {
             System.out.println("Enter the Address: ");
             try {
-                temp.setAddress(br.readLine());
+                Pattern specialCharPattern = Pattern.compile("[`~!@#$%^&\\*()*-+<>;:?{}=_]");
+                String Address = br.readLine();
+
+                if (Address == null || Address.trim().isEmpty()) {
+                    throw new EmptyFieldException("Address Empty Not Valid! Try Again...");
+                }
+                Matcher m = specialCharPattern.matcher(Address);
+                boolean b = m.find();
+                if(b){
+                    throw new SpecialCharNotAllowed("\nSpecial Characters are not allowed in Address.\nOnly , . / are allowed.\nTry Again.");
+                }
+                temp.setAddress(Address);
                 break;
-            } catch (EmptyFieldException | IOException e) {
+            } catch (SpecialCharNotAllowed| EmptyFieldException | IOException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -671,7 +705,7 @@ System.out.println("|_|  |_|\\___/ \\__\\___|_|  \\____/ \\__,_| \\_/ \\__,_|_|\
         Main_control_loop:
         while (true) {
             System.out.println("\n\n______________________");
-            System.out.println("Welcome to Hotel JavaKania Management System");
+            System.out.println("Welcome to Hotel Shalimaaar Management System");
             System.out.println("_____________________\n\n");
             System.out.println("1. Add New Customer");
             System.out.println("2. Fetch the Customer");
