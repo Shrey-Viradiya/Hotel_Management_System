@@ -216,7 +216,7 @@ System.out.println(" _    _       _       _     _____ _           _ _           
         while (true) {
             System.out.println("Enter the Name: ");
             try {
-                Pattern specialCharPattern = Pattern.compile("[`~!@#$%^&.*()/*-+,<>;:?{}=_]");
+                Pattern specialCharPattern = Pattern.compile("[`[0-9]~!@#$%^&.*()/*-+,<>;:?{}=_]");
                 String Name = br.readLine();
 
                 if (Name == null || Name.trim().isEmpty()) {
@@ -237,7 +237,7 @@ System.out.println(" _    _       _       _     _____ _           _ _           
         while (true) {
             System.out.println("Enter the Address: ");
             try {
-                Pattern specialCharPattern = Pattern.compile("[`~!@#$%^&\\*()*-+<>;:?{}=_]");
+                Pattern specialCharPattern = Pattern.compile("[`.~!@#$%^&*()*-+<>;:?{}=_]");
                 String Address = br.readLine();
 
                 if (Address == null || Address.trim().isEmpty()) {
@@ -301,14 +301,61 @@ System.out.println(" _    _       _       _     _____ _           _ _           
         int quantity;
         double ppu;
 
-        System.out.println("Item: ");
-        item = br.readLine();
+        while (true) {
+            System.out.println("Enter the Item: ");
+            try {
+                Pattern specialCharPattern = Pattern.compile("[`[0-9]~!@#$%^&.*()/*-+,<>;:?{}=_]");
+                item = br.readLine();
 
-        System.out.println("Quantity: ");
-        quantity = Integer.parseInt(br.readLine());
+                if (item == null || item.trim().isEmpty()) {
+                    throw new EmptyFieldException("Item Name Empty Not Valid! Try Again...");
+                }
+                Matcher m = specialCharPattern.matcher(item);
+                boolean b = m.find();
+                if(b){
+                    throw new SpecialCharNotAllowed("Special Characters are not allowed in Item Name. Try Again.");
+                }
+                break;
+            } catch (SpecialCharNotAllowed| EmptyFieldException | IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
-        System.out.println("Price Per Unit: ");
-        ppu = Double.parseDouble(br.readLine());
+        while (true) {
+            System.out.println("Enter the Quantity: ");
+            try {
+                while (true)
+                    try {
+                        quantity = Integer.parseInt(br.readLine());
+                        break;
+                    } catch (NumberFormatException ignored) {
+                    }
+                break;
+            } catch (IOException exp) {
+                System.out.println(exp.getMessage());
+            } catch (InputMismatchException e) {
+                System.out.println("Input Type is Mismatched. Enter Integral values only");
+                br.readLine();
+            }
+        }
+
+        while (true) {
+            System.out.println("Enter the Price Per Unit: ");
+            try {
+                while (true)
+                    try {
+                        ppu = Double.parseDouble(br.readLine());
+                        break;
+                    } catch (NumberFormatException ignored) {
+                    }
+                break;
+            } catch (IOException exp) {
+                System.out.println(exp.getMessage());
+            } catch (InputMismatchException e) {
+                System.out.println("Input Type is Mismatched. Enter Integral values only");
+                br.readLine();
+            }
+        }
 
         Item temp = new Item(item, quantity, ppu);
 
@@ -329,11 +376,43 @@ System.out.println(" _    _       _       _     _____ _           _ _           
         String Service;
         double Price;
 
-        System.out.println("Service: ");
-        Service = br.readLine();
+        while (true) {
+            System.out.println("Enter the Service: ");
+            try {
+                Pattern specialCharPattern = Pattern.compile("[`[0-9]~!@#$%^&.*()/*-+,<>;:?{}=_]");
+                Service = br.readLine();
 
-        System.out.println("Price: ");
-        Price = Double.parseDouble(br.readLine());
+                if (Service == null || Service.trim().isEmpty()) {
+                    throw new EmptyFieldException("Service Name Empty Not Valid! Try Again...");
+                }
+                Matcher m = specialCharPattern.matcher(Service);
+                boolean b = m.find();
+                if(b){
+                    throw new SpecialCharNotAllowed("Special Characters are not allowed in Item Name. Try Again.");
+                }
+                break;
+            } catch (SpecialCharNotAllowed| EmptyFieldException | IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        while (true) {
+            System.out.println("Enter the Price: ");
+            try {
+                while (true)
+                    try {
+                        Price = Double.parseDouble(br.readLine());
+                        break;
+                    } catch (NumberFormatException ignored) {
+                    }
+                break;
+            } catch (IOException exp) {
+                System.out.println(exp.getMessage());
+            } catch (InputMismatchException e) {
+                System.out.println("Input Type is Mismatched. Enter Integral values only");
+                br.readLine();
+            }
+        }
 
         Service temp = new Service(Service, Price);
 

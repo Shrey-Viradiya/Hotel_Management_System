@@ -34,3 +34,111 @@ Room Allocated: (@time: 14/11/19 14:58:14): To customer: 8f932d60-85af-4651-88f2
 Item Ordered: (@time: 14/11/19 14:58:14): By customer: 8f932d60-85af-4651-88f2-6fbb00bbaf2d: Something Good@ Rs. 100.0 * 4
 Day Change
 Customer Checked Out: (@time: 14/11/19 14:58:14): Customer: ID = 8f932d60-85af-4651-88f2-6fbb00bbaf2d Name = Vansh Kamdar Address = BodakDev Contact No. = 7854785478
+New customer: (@time: 15/11/19 22:56:22): Customer: ID = f0da3a2d-bd93-4530-b126-4c569c6c5c53 Name = Priyanka Chopra Address = Nick na ghar ma Contact No. = 4857485748
+Room Allocated: (@time: 15/11/19 22:56:22): To customer: f0da3a2d-bd93-4530-b126-4c569c6c5c53: Room No. Room117 with no of bed(s): 2
+Day Change
+Item Ordered: (@time: 15/11/19 22:56:22): By customer: f0da3a2d-bd93-4530-b126-4c569c6c5c53: Hamburger Sandwich@ Rs. 250.0 * 1
+Item Ordered: (@time: 15/11/19 22:56:22): By customer: f0da3a2d-bd93-4530-b126-4c569c6c5c53: Izachio Pasta@ Rs. 360.0 * 1
+Service Provided: (@time: 15/11/19 22:56:22): To customer: f0da3a2d-bd93-4530-b126-4c569c6c5c53: CarWash@ Rs. 3000.0
+Day Change
+Day Change
+Day Change
+Day Change
+Day Change
+Day Change
+Day Change
+Customer Checked Out: (@time: 15/11/19 22:56:22): Customer: ID = f0da3a2d-bd93-4530-b126-4c569c6c5c53 Name = Priyanka Chopra Address = Nick na ghar ma Contact No. = 4857485748
+New customer: (@time: 16/11/19 17:22:11): Customer: ID = f06ba171-cde9-41e0-ba8a-c92dfd577f5a Name = Sunidhi Tandel Address = Vapi Contact No. = 7854785698
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: f06ba171-cde9-41e0-ba8a-c92dfd577f5a: Room No. Room107 with no of bed(s): 1
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: f06ba171-cde9-41e0-ba8a-c92dfd577f5a: Room No. Room118 with no of bed(s): 2
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: f06ba171-cde9-41e0-ba8a-c92dfd577f5a: Room No. Room119 with no of bed(s): 2
+New customer: (@time: 16/11/19 17:22:11): Customer: ID = 575735b2-ae31-4875-8128-6227ebe91f11 Name = Vansh Kamdar Address = Pakvan Contact No. = 8521214788
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 575735b2-ae31-4875-8128-6227ebe91f11: Room No. Room108 with no of bed(s): 1
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 575735b2-ae31-4875-8128-6227ebe91f11: Room No. Room109 with no of bed(s): 1
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 575735b2-ae31-4875-8128-6227ebe91f11: Room No. Room120 with no of bed(s): 2
+New customer: (@time: 16/11/19 17:22:11): Customer: ID = 25ec41ee-79c8-47d3-833e-2d8e04bbc924 Name = Tirth Patel Address = Gandhinagar Contact No. = 1254125412
+Day Change
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 25ec41ee-79c8-47d3-833e-2d8e04bbc924: Room No. Room110 with no of bed(s): 1
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 25ec41ee-79c8-47d3-833e-2d8e04bbc924: Room No. Room111 with no of bed(s): 1
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 25ec41ee-79c8-47d3-833e-2d8e04bbc924: Room No. Room121 with no of bed(s): 2
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 25ec41ee-79c8-47d3-833e-2d8e04bbc924: Room No. Room122 with no of bed(s): 2
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 25ec41ee-79c8-47d3-833e-2d8e04bbc924: Room No. Room123 with no of bed(s): 2
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 25ec41ee-79c8-47d3-833e-2d8e04bbc924: Room No. Room124 with no of bed(s): 2
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 25ec41ee-79c8-47d3-833e-2d8e04bbc924: Room No. Room125 with no of bed(s): 2
+Customer Checked Out: (@time: 16/11/19 17:22:11): Customer: ID = 25ec41ee-79c8-47d3-833e-2d8e04bbc924 Name = Tirth Patel Address = Gandhinagar Contact No. = 1254125412
+New customer: (@time: 16/11/19 17:22:11): Customer: ID = 0d67b200-88eb-43ad-9dc2-cef263b522bf Name = Urvashi Ramdasani Address = Bhuj Contact No. = 9639639631
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 0d67b200-88eb-43ad-9dc2-cef263b522bf: Room No. Room112 with no of bed(s): 1
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 0d67b200-88eb-43ad-9dc2-cef263b522bf: Room No. Room113 with no of bed(s): 1
+Item Ordered: (@time: 16/11/19 17:22:11): By customer: 0d67b200-88eb-43ad-9dc2-cef263b522bf: Sandwich Icecream@ Rs. 250.0 * 1
+Day Change
+New customer: (@time: 16/11/19 17:22:11): Customer: ID = 1de2e417-b7ea-473c-a280-f7cc0a7d353c Name = 3545 Address = ... Contact No. = 7854125489
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 1de2e417-b7ea-473c-a280-f7cc0a7d353c: Room No. Room114 with no of bed(s): 1
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 1de2e417-b7ea-473c-a280-f7cc0a7d353c: Room No. Room100 with no of bed(s): 1
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 1de2e417-b7ea-473c-a280-f7cc0a7d353c: Room No. Room101 with no of bed(s): 1
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 1de2e417-b7ea-473c-a280-f7cc0a7d353c: Room No. Room102 with no of bed(s): 1
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 1de2e417-b7ea-473c-a280-f7cc0a7d353c: Room No. Room103 with no of bed(s): 1
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 1de2e417-b7ea-473c-a280-f7cc0a7d353c: Room No. Room104 with no of bed(s): 1
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 1de2e417-b7ea-473c-a280-f7cc0a7d353c: Room No. Room105 with no of bed(s): 1
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 1de2e417-b7ea-473c-a280-f7cc0a7d353c: Room No. Room106 with no of bed(s): 1
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 1de2e417-b7ea-473c-a280-f7cc0a7d353c: Room No. Room110 with no of bed(s): 1
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 1de2e417-b7ea-473c-a280-f7cc0a7d353c: Room No. Room111 with no of bed(s): 1
+Day Change
+Customer Checked Out: (@time: 16/11/19 17:22:11): Customer: ID = 1de2e417-b7ea-473c-a280-f7cc0a7d353c Name = 3545 Address = ... Contact No. = 7854125489
+Day Change
+New customer: (@time: 16/11/19 17:22:11): Customer: ID = 87393891-4a6d-4bfa-90f4-e8055fec2bd5 Name = Gautam Rakholia Address = Hiramani Hostel Contact No. = 8541256378
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 87393891-4a6d-4bfa-90f4-e8055fec2bd5: Room No. Room114 with no of bed(s): 1
+Service Provided: (@time: 16/11/19 17:22:11): To customer: 87393891-4a6d-4bfa-90f4-e8055fec2bd5: CarWash@ Rs. 3000.0
+Day Change
+New customer: (@time: 16/11/19 17:22:11): Customer: ID = 8960da87-1cc5-4356-ae85-da23db16adfa Name = Tulsi Palan Address = Bhavnagar Contact No. = 1111111111
+Day Change
+Day Change
+Day Change
+Day Change
+Day Change
+Day Change
+Day Change
+Day Change
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 8960da87-1cc5-4356-ae85-da23db16adfa: Room No. Room126 with no of bed(s): 2
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 8960da87-1cc5-4356-ae85-da23db16adfa: Room No. Room127 with no of bed(s): 2
+Room Allocated: (@time: 16/11/19 17:22:11): To customer: 8960da87-1cc5-4356-ae85-da23db16adfa: Room No. Room128 with no of bed(s): 2
+Day Change
+New customer: (@time: 16/11/19 18:55:56): Customer: ID = a7b92c62-cd8e-4853-805e-5f10b807378e Name = Ted Mowsby Address = New York City Contact No. = 1212121212
+Room Allocated: (@time: 16/11/19 18:55:56): To customer: a7b92c62-cd8e-4853-805e-5f10b807378e: Room No. Room100 with no of bed(s): 1
+Room Allocated: (@time: 16/11/19 18:55:56): To customer: a7b92c62-cd8e-4853-805e-5f10b807378e: Room No. Room101 with no of bed(s): 1
+Room Allocated: (@time: 16/11/19 18:55:56): To customer: a7b92c62-cd8e-4853-805e-5f10b807378e: Room No. Room129 with no of bed(s): 2
+Day Change
+Service Provided: (@time: 16/11/19 18:55:56): To customer: a7b92c62-cd8e-4853-805e-5f10b807378e: ...@ Rs. 1523.0
+Day Change
+Customer Checked Out: (@time: 16/11/19 18:55:56): Customer: ID = f06ba171-cde9-41e0-ba8a-c92dfd577f5a Name = Sunidhi Tandel Address = Vapi Contact No. = 7854785698
+New customer: (@time: 17/11/19 09:49:27): Customer: ID = ccb2d8c0-e0eb-4e15-89aa-794e021fc7c8 Name = Robin Swabotsky Address = Torrento Tower, Torrento, Canada Contact No. = 1524785632
+Room Allocated: (@time: 17/11/19 09:49:27): To customer: ccb2d8c0-e0eb-4e15-89aa-794e021fc7c8: Room No. Room102 with no of bed(s): 1
+Room Allocated: (@time: 17/11/19 09:49:27): To customer: ccb2d8c0-e0eb-4e15-89aa-794e021fc7c8: Room No. Room103 with no of bed(s): 1
+Item Ordered: (@time: 17/11/19 09:49:27): By customer: ccb2d8c0-e0eb-4e15-89aa-794e021fc7c8: Grilled Chichen Sandwich@ Rs. 201.0 * 2
+Day Change
+Item Ordered: (@time: 17/11/19 09:49:27): By customer: ccb2d8c0-e0eb-4e15-89aa-794e021fc7c8: Boiled Egg and Swarchio Pizza@ Rs. 1.0 * 2541
+Service Provided: (@time: 17/11/19 09:49:27): To customer: ccb2d8c0-e0eb-4e15-89aa-794e021fc7c8: SpaMassage@ Rs. 5000.0
+Day Change
+Day Change
+Day Change
+New customer: (@time: 17/11/19 09:49:27): Customer: ID = 8fb00c8f-d60a-4c44-bbed-bf1ef0506706 Name = Darshan Mehta Address = Baha Mechanical Contact No. = 4564564564
+Room Allocated: (@time: 17/11/19 09:49:27): To customer: 8fb00c8f-d60a-4c44-bbed-bf1ef0506706: Room No. Room104 with no of bed(s): 1
+Room Allocated: (@time: 17/11/19 09:49:27): To customer: 8fb00c8f-d60a-4c44-bbed-bf1ef0506706: Room No. Room105 with no of bed(s): 1
+Room Allocated: (@time: 17/11/19 09:49:27): To customer: 8fb00c8f-d60a-4c44-bbed-bf1ef0506706: Room No. Room115 with no of bed(s): 2
+Room Allocated: (@time: 17/11/19 09:49:27): To customer: 8fb00c8f-d60a-4c44-bbed-bf1ef0506706: Room No. Room116 with no of bed(s): 2
+Room Allocated: (@time: 17/11/19 09:49:27): To customer: 8fb00c8f-d60a-4c44-bbed-bf1ef0506706: Room No. Room117 with no of bed(s): 2
+Service Provided: (@time: 17/11/19 09:49:27): To customer: 8fb00c8f-d60a-4c44-bbed-bf1ef0506706: CarWash@ Rs. 3000.0
+Customer Checked Out: (@time: 17/11/19 09:49:27): Customer: ID = 8960da87-1cc5-4356-ae85-da23db16adfa Name = Tulsi Palan Address = Bhavnagar Contact No. = 1111111111
+Day Change
+Customer Checked Out: (@time: 17/11/19 09:49:27): Customer: ID = 575735b2-ae31-4875-8128-6227ebe91f11 Name = Vansh Kamdar Address = Pakvan Contact No. = 8521214788
+Day Change
+Customer Checked Out: (@time: 17/11/19 09:49:27): Customer: ID = 0d67b200-88eb-43ad-9dc2-cef263b522bf Name = Urvashi Ramdasani Address = Bhuj Contact No. = 9639639631
+Customer Checked Out: (@time: 17/11/19 09:49:27): Customer: ID = 8fb00c8f-d60a-4c44-bbed-bf1ef0506706 Name = Darshan Mehta Address = Baha Mechanical Contact No. = 4564564564
+New customer: (@time: 17/11/19 10:03:29): Customer: ID = 0a1951d9-5a06-4c9d-bb5e-b16b771f91fe Name = Shrey Viradiya Address = Nathdwara Contact No. = 7046170441
+Room Allocated: (@time: 17/11/19 10:03:29): To customer: 0a1951d9-5a06-4c9d-bb5e-b16b771f91fe: Room No. Room106 with no of bed(s): 1
+Room Allocated: (@time: 17/11/19 10:03:29): To customer: 0a1951d9-5a06-4c9d-bb5e-b16b771f91fe: Room No. Room110 with no of bed(s): 1
+Service Provided: (@time: 17/11/19 10:03:29): To customer: 0a1951d9-5a06-4c9d-bb5e-b16b771f91fe: Drinks@ Rs. 2540.0
+Customer Checked Out: (@time: 17/11/19 10:03:29): Customer: ID = 87393891-4a6d-4bfa-90f4-e8055fec2bd5 Name = Gautam Rakholia Address = Hiramani Hostel Contact No. = 8541256378
+New customer: (@time: 17/11/19 10:03:29): Customer: ID = bc0c570c-8bf2-4366-bc6d-8119272efdf2 Name = Robin Address = Indiagate Contact No. = 8585859696
+Room Allocated: (@time: 17/11/19 10:03:29): To customer: bc0c570c-8bf2-4366-bc6d-8119272efdf2: Room No. Room111 with no of bed(s): 1
+Customer Checked Out: (@time: 17/11/19 10:03:29): Customer: ID = ccb2d8c0-e0eb-4e15-89aa-794e021fc7c8 Name = Robin Swabotsky Address = Torrento Tower, Torrento, Canada Contact No. = 1524785632
+Day Change
