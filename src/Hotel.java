@@ -29,7 +29,7 @@ public class Hotel {
 
     // Room Increasing Thread
     private static class DayChange
-            implements Runnable {
+            implements Runnable     {
         public void run() {
             try {
                 while (true) {
